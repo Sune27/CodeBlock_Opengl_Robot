@@ -31,16 +31,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Config.h" />
-		<Unit filename="Console.cpp" />
-		<Unit filename="Console.h" />
-		<Unit filename="RobotArm.cpp" />
-		<Unit filename="RobotArm.h" />
-		<Unit filename="UserInterface.cpp" />
-		<Unit filename="UserInterface.h" />
-		<Unit filename="Utils.cpp" />
-		<Unit filename="Utils.h" />
+		<Unit filename="include/Config.h" />
+		<Unit filename="include/Console.h" />
+		<Unit filename="include/RobotArm.h" />
+		<Unit filename="include/UI.h" />
+		<Unit filename="include/UI_Attributes.h" />
+		<Unit filename="include/UserInterface.h" />
+		<Unit filename="include/Utils.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="source/Console.cpp" />
+		<Unit filename="source/RobotArm.cpp" />
+		<Unit filename="source/UI.cpp" />
+		<Unit filename="source/UserInterface.cpp" />
+		<Unit filename="source/Utils.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
