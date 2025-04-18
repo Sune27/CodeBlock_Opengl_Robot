@@ -6,7 +6,7 @@ UI_Elements::UI_Elements(){}
 UI_Elements::~UI_Elements(){}
 void UI_Elements::draw(){}
 void UI_Elements::buttonOver(int mouseX, int mouseY){};
-
+bool UI_Elements::getStatusHovered(){}
 //button
 Button::Button(int x, int y, int width, int height, Color background, Color backgroundHover)
 {
@@ -31,10 +31,16 @@ void Button::draw()
     }
 }
 
+bool Button::getStatusHovered()
+{
+    return is_hovered;
+}
 void Button::buttonOver(int mouseX, int mouseY)
 {
     is_hovered = (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height);
 }
+
+
 
 //UI manager
 UI_Manager::UI_Manager()
@@ -65,9 +71,12 @@ void UI_Manager::draw()
 	glEnable(GL_DEPTH_TEST);
 }
 
+
+
 void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
 {
     UI_Maps[UIObject::EXIT_BUTTON_UI]->buttonOver(mouseX, mouseY);
 }
+
 UI_Manager::~UI_Manager(){}
 Button::~Button(){}

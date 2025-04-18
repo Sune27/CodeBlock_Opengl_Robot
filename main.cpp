@@ -114,7 +114,10 @@ void mouseFunc(int button, int state, int x, int y)
 	{
         if (state == GLUT_DOWN)
 		{
-
+			if(widget.UI_Maps[UIObject::EXIT_BUTTON_UI]->getStatusHovered())
+			{
+				exit(0);
+			}
         }
 		else if (state == GLUT_UP)
 		{
