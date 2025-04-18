@@ -19,9 +19,9 @@ void Button::setValue(float x, float y, float width, float height, Color backgro
 void Button::draw(const char* text)
 {
 	if(isHover)
-		drawButton(x, y, width, height, backgroundHover, textColor, text);
+		drawButton(x, y, width, height, backgroundHover, textColor);
 	else
-		drawButton(x, y, width, height, background, textColor, text);
+		drawButton(x, y, width, height, background, textColor);
 }
 bool Button::isMouseOver(int mouseX, int mouseY)
 {
