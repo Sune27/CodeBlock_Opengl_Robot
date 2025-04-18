@@ -35,7 +35,7 @@ const int NUM_SEGMENTS = 30;
 
 enum UIObject
 {
-    EXIT_BUTTON,
+    EXIT_BUTTON_UI,
     
     TOTAL_OBJECT
 };
