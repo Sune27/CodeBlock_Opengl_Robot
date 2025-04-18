@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include <memory>
 #include <unordered_map>
+#include <string>
 #include "UI_Attributes.h"
 using namespace std;
 
@@ -15,19 +16,24 @@ class UI_Elements
         virtual void draw();
         virtual void buttonOver(int mouseX, int mouseY);
         virtual bool getStatusHovered();
+        virtual void setStatusHovered(bool status);
     private:
 };
 
-class Icon : public UI_Elements
-{
-    public:
-    private:
-};
 
 class Label : public UI_Elements 
 {
     public:
+        Label();
+        Label(int x, int y, string text, Color color, Color hoverColor);
+        ~Label();
+        void setStatusHovered(bool status) override;
+        void draw() override;
     private:
+        int x, y;
+        string text;
+        Color color, hoverColor;
+        bool isButtonHovered;
 };
 
 class Button : public UI_Elements
@@ -42,7 +48,7 @@ class Button : public UI_Elements
     private:
         int x, y, width, height;
         Color background, background_hover;
-        bool is_hovered;
+        bool isHovered;
 };
 
 class Checkbox : public UI_Elements

@@ -2,6 +2,20 @@
 #include "../include/Config.h"
 using namespace std;
 
+void drawText(int x, int y, const string& str, Color color)
+{
+    // Thiết lập màu chữ
+    setColor(color);
+
+    // Thiết lập vị trí raster
+    glRasterPos2i(x, y); // Sử dụng glRasterPos2i cho tọa độ integer
+
+    // Vẽ từng ký tự trong chuỗi
+    for (char c : str) {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, c); // Hoặc một font khác
+    }
+}
+
 void normalizeAngle(float& angle)
 {
     angle = fmod(angle, 360.0f);
