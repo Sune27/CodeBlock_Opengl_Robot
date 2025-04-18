@@ -100,9 +100,6 @@ void RobotArm::printAttributes()
     cout << boolalpha;
     cout << "isLeftHandClaw: " << isLeftHandClaw << endl;
     cout << "isRightHandClaw: " << isRightHandClaw << endl;
-    cout << "eyeX: " << eyeX << endl;
-	cout << "eyeY: " << eyeY << endl;
-	cout << "eyeZ: " << eyeZ << endl;
 }
 
 void RobotArm::update()

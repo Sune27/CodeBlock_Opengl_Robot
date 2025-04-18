@@ -5,7 +5,7 @@
 1744943898 d:\code\cpp\opengl_codeblocks\robot_project\console.h
 	<windows.h>
 
-1744984002 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
+1744992129 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
 	<bits/stdc++.h>
 	<GL/glut.h>
 	"include/Config.h"
@@ -51,7 +51,7 @@
 1744944172 source:d:\code\cpp\opengl_codeblocks\robot_project\source\console.cpp
 	"Console.h"
 
-1744989859 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
+1744992614 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
 	<GL/glut.h>
 
 1744990931 d:\code\cpp\opengl_codeblocks\robot_project\include\utils.h
@@ -78,7 +78,7 @@
 	"Config.h"
 	"Utils.h"
 
-1744981902 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
+1744991943 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
 	"../include/RobotArm.h"
 
 1744980945 source:d:\code\cpp\opengl_codeblocks\robot_project\source\userinterface.cpp
@@ -88,7 +88,7 @@
 	"../include/Utils.h"
 	"../include/Config.h"
 
-1744990442 source:d:\code\cpp\opengl_codeblocks\robot_project\source\ui.cpp
+1744993000 source:d:\code\cpp\opengl_codeblocks\robot_project\source\ui.cpp
 	"../include/UI.h"
 
 1744990802 d:\code\cpp\opengl_codeblocks\robot_project\include\ui.h
@@ -98,7 +98,7 @@
 	<string>
 	"UI_Attributes.h"
 
-1744990675 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
+1744992497 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
 	"Config.h"
 	"Utils.h"
 

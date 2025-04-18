@@ -105,8 +105,16 @@ UI_Manager::UI_Manager()
 {
     UI_Maps[UIObject::EXIT_BUTTON_UI] = make_unique<Button>(X_exitButton, Y_exitButton, Width_exitButton, Height_exitButton, Background_exitButton, BackgroundHover_exitButton);
     UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI] = make_unique<Button>(X_leftArrowButton, Y_leftArrowButton, Width_leftArrowButton, Height_leftArrowButton, Background_leftArrowButton, BackgroundHover_leftArrowButton);
+    UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI] = make_unique<Button>(X_rightArrowButton, Y_rightArrowButton, Width_rightArrowButton, Height_rightArrowButton, Background_rightArrowButton, BackgroundHover_rightArrowButton);
+    UI_Maps[UIObject::UP_ARROW_BUTTON_UI] = make_unique<Button>(X_upArrowButton, Y_upArrowButton, Width_upArrowButton, Height_upArrowButton, Background_upArrowButton, BackgroundHover_upArrowButton);
+    UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI] = make_unique<Button>(X_downArrowButton, Y_downArrowButton, Width_downArrowButton, Height_downArrowButton, Background_downArrowButton, BackgroundHover_downArrowButton);
+
     UI_Maps[UIObject::EXIT_LABEL_UI] = make_unique<Label>(X_exitLabel, Y_exitLabel, Text_exitLabel, Color_exitLabel, HoverColor_exitLabel);
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_leftArrowSymbol, Y_leftArrowSymbol, Width_leftArrowSymbol, Height_leftArrowSymbol, Type_leftArrowSymbol);
+    UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_rightArrowSymbol, Y_rightArrowSymbol, Width_rightArrowSymbol, Height_rightArrowSymbol, Type_rightArrowSymbol);
+    UI_Maps[UIObject::UP_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_upArrowSymbol, Y_upArrowSymbol, Width_upArrowSymbol, Height_upArrowSymbol, Type_upArrowSymbol);
+    UI_Maps[UIObject::DOWN_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_downArrowSymbol, Y_downArrowSymbol, Width_downArrowSymbol, Height_downArrowSymbol, Type_downArrowSymbol);
+
 }
 
 void UI_Manager::draw()
@@ -123,9 +131,15 @@ void UI_Manager::draw()
 	// Vẽ các thành phần UI 2D
     UI_Maps[UIObject::EXIT_BUTTON_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->draw();
+    UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->draw();
+    UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->draw();
+    UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->draw();
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->draw();
+    UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI]->draw();
+    UI_Maps[UIObject::UP_ARROW_SYMBOL_UI]->draw();
+    UI_Maps[UIObject::DOWN_ARROW_SYMBOL_UI]->draw();
 	// Khôi phục projection matrix và modelview matrix
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -141,9 +155,16 @@ void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
 {
     UI_Maps[UIObject::EXIT_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
-    
+    UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
+
     UI_Maps[UIObject::EXIT_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::EXIT_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::UP_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::DOWN_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->getStatusHovered());
+
 }
 
 //all destructor

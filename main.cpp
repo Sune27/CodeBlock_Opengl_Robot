@@ -7,8 +7,6 @@
 //#include "include/UserInterface.h"
 #include "include/UI.h"
 using namespace std;
-//dcm thang nghia
-//dcm sifu
 
 RobotArm robotArm;
 UI_Manager widget;
@@ -16,6 +14,7 @@ UI_Manager widget;
 vector<bool> keys(256, false);
 vector<bool> specialKeys(256, false);
 float cameraAngle = 0;
+float cameraAngleZ = 0;
 
 void display();
 void reshape(int, int);
@@ -68,10 +67,13 @@ void display()
 
 	gluLookAt
 	(
-		eyeX*cos(cameraAngle), eyeY*sin(cameraAngle), eyeZ,
+		eyeX*cos(cameraAngle), eyeY*sin(cameraAngle), eyeZ+cameraAngleZ,
 		centerX, centerY, centerZ,
 		upX, upY, upZ
 	);
+	cout << "eyeX: " << eyeX*cos(cameraAngle) << endl;
+	cout << "eyeY: " << eyeY*sin(cameraAngle) << endl;
+	cout << "eyeZ: " << eyeZ+cameraAngleZ << endl;
 
 	robotArm.draw();
 	widget.draw();
@@ -118,9 +120,30 @@ void mouseFunc(int button, int state, int x, int y)
 			{
 				exit(0);
 			}
+			else if(widget.UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered())
+			{
+				specialKeys[GLUT_KEY_LEFT] = true;
+			}
+			else if(widget.UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered())
+			{
+				specialKeys[GLUT_KEY_RIGHT] = true;
+			}
+			else if(widget.UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->getStatusHovered())
+			{
+				specialKeys[GLUT_KEY_UP] = true;
+			}
+			else if(widget.UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->getStatusHovered())
+			{
+				specialKeys[GLUT_KEY_DOWN] = true;
+			}
+
         }
 		else if (state == GLUT_UP)
 		{
+			specialKeys[GLUT_KEY_LEFT] = false;
+			specialKeys[GLUT_KEY_RIGHT] = false;
+			specialKeys[GLUT_KEY_UP] = false;
+			specialKeys[GLUT_KEY_DOWN] = false;
 
         }
         glutPostRedisplay(); // Vẽ lại
@@ -194,6 +217,10 @@ void checkEventSpecialKeys()
 
 	if(specialKeys[GLUT_KEY_LEFT])
 		normalizeAngle(cameraAngle += rotate);
-	if(specialKeys[GLUT_KEY_RIGHT])
+	else if(specialKeys[GLUT_KEY_RIGHT])
 		normalizeAngle(cameraAngle -= rotate);
+	if(specialKeys[GLUT_KEY_UP])
+		cameraAngleZ += rotate;
+	if(specialKeys[GLUT_KEY_DOWN])
+		cameraAngleZ -= rotate;
 }
