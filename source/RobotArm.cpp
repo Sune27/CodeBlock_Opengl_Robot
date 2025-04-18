@@ -89,18 +89,7 @@ RobotHead::RobotHead()
 
 void RobotArm::printAttributeToTxt()
 {
-    // ofstream outputFile("attributes.txt");
-    // if(outputFile.is_open() == false)
-    // {
-    //     cerr << "khong the mo file attribute.txt";
-    // }
-    // else
-    // {
-    //     outputFile << "float baseLeg_Radius = " << baseLeg_Radius << ";" << endl;
-    //     outputFile << "float baseLeg_Height = " << baseLeg_Height << ";" << endl;
 
-    //     outputFile << "leftLongArm_Color: WHITE 255 255 255"  << endl;
-    // }
 }
 
 void RobotArm::printAttributes()
@@ -108,25 +97,12 @@ void RobotArm::printAttributes()
     cout << __TIME__ << endl;
     cout << "angleX: " << angleX << endl;
     cout << "angleZ: " << angleZ << endl;
-    cout << "angleLeftShortArm: " << angleLeftShortArm << endl;
-    cout << "angleRightShortArm: " << angleRightShortArm << endl;
-    cout << "angleXLeftLongArm: " << angleXLeftLongArm << endl;
-    cout << "angleXRightLongArm: " << angleXRightLongArm << endl;
-    cout << "angleZLeftLongArm: " << angleZLeftLongArm << endl;
-    cout << "angleZRightLongArm: " << angleZRightLongArm << endl;
     cout << boolalpha;
     cout << "isLeftHandClaw: " << isLeftHandClaw << endl;
     cout << "isRightHandClaw: " << isRightHandClaw << endl;
     cout << "eyeX: " << eyeX << endl;
 	cout << "eyeY: " << eyeY << endl;
 	cout << "eyeZ: " << eyeZ << endl;
-	cout << "centerX: " << centerX << endl;
-	cout << "centerY: " << centerY << endl;
-	cout << "centerZ: " << centerZ << endl;
-	cout << "upX: " << upX << endl;
-	cout << "upY: " << upY << endl;
-	cout << "upZ: " << upZ << endl;
-
 }
 
 void RobotArm::update()

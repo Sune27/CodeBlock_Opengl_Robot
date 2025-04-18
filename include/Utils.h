@@ -241,7 +241,7 @@ struct Point
 
 void normalizeAngle(float& angle);
 void drawFloor(double size, int divisions, Color color);
-void drawButton(float x, float y, float width, float height, Color background, Color textColor);
+void drawButton(float x, float y, float width, float height, Color background);
 void drawWireSphere(Point center, float radius, Color color);
 void drawSolidSphere(Point center, float radius, Color color);
 double distanceTwoPoint(Point p1, Point p2);

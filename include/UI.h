@@ -13,6 +13,8 @@ class UI_Elements
         UI_Elements();
         ~UI_Elements();
         virtual void draw();
+        virtual void buttonOver(int mouseX, int mouseY);
+        virtual bool getStatusHovered();
     private:
 };
 
@@ -34,11 +36,21 @@ class Button : public UI_Elements
         Button();
         Button(int x, int y, int width, int height, Color background, Color background_hover);
         ~Button();
-        //void draw() override;
+        void draw() override;
+        void buttonOver(int mouseX, int mouseY) override;
+        bool getStatusHovered() override;
     private:
         int x, y, width, height;
         Color background, background_hover;
         bool is_hovered;
+};
+
+class Checkbox : public UI_Elements
+{
+    public:
+        Checkbox();
+        ~Checkbox();
+    private:
 };
 
 class UI_Manager
@@ -47,6 +59,8 @@ class UI_Manager
         unordered_map<UIObject, unique_ptr<UI_Elements>> UI_Maps;
         UI_Manager();
         ~UI_Manager();
+        void draw();
+        void checkAllButtonOver(int mouseX, int mouseY);
     private:
 
 };

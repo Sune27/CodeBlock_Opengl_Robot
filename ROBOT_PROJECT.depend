@@ -5,14 +5,14 @@
 1744943898 d:\code\cpp\opengl_codeblocks\robot_project\console.h
 	<windows.h>
 
-1744946647 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
+1744982841 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
 	<bits/stdc++.h>
 	<GL/glut.h>
 	"include/Config.h"
 	"include/Utils.h"
 	"include/Console.h"
 	"include/RobotArm.h"
-	"include/UserInterface.h"
+	"include/UI.h"
 
 1744943898 d:\code\cpp\opengl_codeblocks\robot_project\config.h
 	<GL/glut.h>
@@ -54,7 +54,7 @@
 1744962573 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
 	<GL/glut.h>
 
-1744959360 d:\code\cpp\opengl_codeblocks\robot_project\include\utils.h
+1744980918 d:\code\cpp\opengl_codeblocks\robot_project\include\utils.h
 	<GL/glut.h>
 	<cmath>
 	<math.h>
@@ -78,26 +78,26 @@
 	"Config.h"
 	"Utils.h"
 
-1744944525 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
+1744981902 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
 	"../include/RobotArm.h"
 
-1744957374 source:d:\code\cpp\opengl_codeblocks\robot_project\source\userinterface.cpp
+1744980945 source:d:\code\cpp\opengl_codeblocks\robot_project\source\userinterface.cpp
 	"../include/UserInterface.h"
 
-1744959368 source:d:\code\cpp\opengl_codeblocks\robot_project\source\utils.cpp
+1744980873 source:d:\code\cpp\opengl_codeblocks\robot_project\source\utils.cpp
 	"../include/Utils.h"
 	"../include/Config.h"
 
-1744947769 source:d:\code\cpp\opengl_codeblocks\robot_project\source\ui.cpp
+1744981902 source:d:\code\cpp\opengl_codeblocks\robot_project\source\ui.cpp
 	"../include/UI.h"
 
-1744947938 d:\code\cpp\opengl_codeblocks\robot_project\include\ui.h
+1744982774 d:\code\cpp\opengl_codeblocks\robot_project\include\ui.h
 	<GL/glut.h>
 	<memory>
 	<unordered_map>
 	"UI_Attributes.h"
 
-1744957267 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
+1744981980 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
 	"Config.h"
 	"Utils.h"
 

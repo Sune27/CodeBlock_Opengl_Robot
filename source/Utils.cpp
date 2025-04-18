@@ -34,7 +34,7 @@ void drawFloor(double size = 10.0, int divisions = 10, Color color = GRAY) {
     glEnd();
 }
 
-void drawButton(float x, float y, float width, float height, Color background, Color textColor)
+void drawButton(float x, float y, float width, float height, Color background)
 {
     setColor(background);
     glBegin(GL_QUADS);

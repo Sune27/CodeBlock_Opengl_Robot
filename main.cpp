@@ -4,13 +4,15 @@
 #include "include/Utils.h"
 #include "include/Console.h"
 #include "include/RobotArm.h"
-#include "include/UserInterface.h"
+//#include "include/UserInterface.h"
+#include "include/UI.h"
 using namespace std;
 //dcm thang nghia
 //dcm sifu
 
 RobotArm robotArm;
-UIManager uiManager;
+UI_Manager widget;
+//UIManager uiManager;
 vector<bool> keys(256, false);
 vector<bool> specialKeys(256, false);
 float cameraAngle = 0;
@@ -72,7 +74,7 @@ void display()
 	);
 
 	robotArm.draw();
-	uiManager.draw2DUI();
+	widget.draw();
 	checkEventKeyboard();
 	checkEventSpecialKeys();
 
@@ -112,28 +114,11 @@ void mouseFunc(int button, int state, int x, int y)
 	{
         if (state == GLUT_DOWN)
 		{
-			if(uiManager.getButtonOver(LEFT_ARROW_BUTTON, x, y) == true)
-			{
-				keys['z'] = true;
-			}
-			else if(uiManager.getButtonOver(RIGHT_ARROW_BUTTON, x, y) == true)
-			{
-				keys['x'] = true;
-			}
-			else
-			{
-				uiManager.mouseLeftClicked(x, y);
-			}
-        } else if (state == GLUT_UP)
+
+        }
+		else if (state == GLUT_UP)
 		{
-			if(uiManager.getButtonOver(LEFT_ARROW_BUTTON, x, y) == true)
-			{
-				keys['z'] = false;
-			}
-			else if(uiManager.getButtonOver(RIGHT_ARROW_BUTTON, x, y) == true)
-			{
-				keys['x'] = false;
-			}
+
         }
         glutPostRedisplay(); // Vẽ lại
     }
@@ -141,7 +126,7 @@ void mouseFunc(int button, int state, int x, int y)
 
 void passiveMouseMotion(int x, int y)
 {
-	uiManager.passiveMouseMotion(x, y);
+	widget.checkAllButtonOver(x,y);
 }
 
 void checkEventKeyboard()
@@ -208,5 +193,4 @@ void checkEventSpecialKeys()
 		normalizeAngle(cameraAngle += rotate);
 	if(specialKeys[GLUT_KEY_RIGHT])
 		normalizeAngle(cameraAngle -= rotate);
-
 }

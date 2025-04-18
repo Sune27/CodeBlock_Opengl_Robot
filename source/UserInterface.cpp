@@ -19,9 +19,9 @@ void Button::setValue(float x, float y, float width, float height, Color backgro
 void Button::draw(const char* text)
 {
 	if(isHover)
-		drawButton(x, y, width, height, backgroundHover, textColor);
+		drawButton(x, y, width, height, backgroundHover);
 	else
-		drawButton(x, y, width, height, background, textColor);
+		drawButton(x, y, width, height, background);
 }
 bool Button::isMouseOver(int mouseX, int mouseY)
 {
@@ -135,8 +135,5 @@ void UIManager::drawViewport()
 
 }
 
-UIManager::~UIManager()
-{
-    cout << "Destructor UI class" << endl;
-}
+UIManager::~UIManager(){}
 Button::~Button(){}
