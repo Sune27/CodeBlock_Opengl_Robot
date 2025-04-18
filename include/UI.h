@@ -51,6 +51,20 @@ class Button : public UI_Elements
         bool isHovered;
 };
 
+class Symbol : public UI_Elements
+{
+    public:
+        Symbol();
+        Symbol(int x, int y, int width, int height, string type);
+        ~Symbol();
+        void setStatusHovered(bool status) override;
+        void draw() override;
+    private:
+        int x, y, width, height;
+        Color color, hoverColor;
+        bool isButtonHovered;
+        string type;
+};
 class Checkbox : public UI_Elements
 {
     public:

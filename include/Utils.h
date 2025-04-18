@@ -239,6 +239,7 @@ struct Point
     }
 };
 
+void drawArrow(int x, int y, int width, int height, int direction, Color color);
 void drawText(int x, int y, const string& str, Color color);
 void normalizeAngle(float& angle);
 void drawFloor(double size, int divisions, Color color);

@@ -2,6 +2,42 @@
 #include "../include/Config.h"
 using namespace std;
 
+void drawArrow(int x, int y, int width, int height, int direction, Color color)
+{
+    // Thiết lập màu đen
+    setColor(color);
+
+    // Tính toán các điểm vẽ
+    float centerX = x + width / 2.0f;
+    float centerY = y + height / 2.0f;
+    float arrowSize = std::min(width, height) / 3.0f; // Kích thước mũi tên
+
+    glBegin(GL_TRIANGLES);
+
+    if (direction == 3) { // Left
+        // Đầu mũi tên
+        glVertex2f(x + width / 2, centerY);
+        glVertex2f(x, centerY + height / 4);
+        glVertex2f(x, centerY - height / 4);
+    } else if (direction == 2) { // Up
+        // Đầu mũi tên
+        glVertex2f(centerX, y+ height/2);
+        glVertex2f(centerX + width / 4, y + height);
+        glVertex2f(centerX - width / 4, y + height);
+    } else if (direction == 1) { // Right
+        // Đầu mũi tên
+        glVertex2f(x + width/2, centerY);
+        glVertex2f(x + width, centerY + height / 4);
+        glVertex2f(x + width, centerY - height / 4);
+    } else if (direction == 4) { // Down
+      // Đầu mũi tên
+      glVertex2f(centerX, y+ height/2);
+      glVertex2f(centerX + width / 4, y);
+      glVertex2f(centerX - width / 4, y);
+    }
+
+    glEnd();
+}
 void drawText(int x, int y, const string& str, Color color)
 {
     // Thiết lập màu chữ

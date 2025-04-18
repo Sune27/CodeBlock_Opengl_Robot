@@ -35,6 +35,7 @@ void Label::setStatusHovered(bool status)
     isButtonHovered = status;
 }
 //button
+Button::Button(){}
 Button::Button(int x, int y, int width, int height, Color background, Color backgroundHover)
 {
     this->x = x;
@@ -67,11 +68,45 @@ void Button::buttonOver(int mouseX, int mouseY)
     isHovered = (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height);
 }
 
+//Symbol
+Symbol::Symbol(){}
+Symbol::Symbol(int x, int y, int width, int height, string type)
+{
+    this->x = x;
+    this->y = y;
+    this->width = width;
+    this->height = height;
+    this->type = type;
+    this->color = WHITE;
+    this->hoverColor = GRAY;
+    this->isButtonHovered = false;
+}
+
+void Symbol::setStatusHovered(bool status)
+{
+    isButtonHovered = status;
+}
+
+void Symbol::draw()
+{
+    Color currentColor = (isButtonHovered)?hoverColor:color;
+    if(type == "LEFT_ARROW")
+        drawArrow(x, y, width, height, 1, currentColor);
+    else if(type == "UP_ARROW")
+        drawArrow(x, y, width, height, 2, currentColor);
+    else if(type == "RIGHT_ARROW")
+        drawArrow(x, y, width, height, 3, currentColor);
+    else if(type == "DOWN_ARROW")
+        drawArrow(x, y, width, height, 4, currentColor);
+}
+
 //UI manager
 UI_Manager::UI_Manager()
 {
     UI_Maps[UIObject::EXIT_BUTTON_UI] = make_unique<Button>(X_exitButton, Y_exitButton, Width_exitButton, Height_exitButton, Background_exitButton, BackgroundHover_exitButton);
+    UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI] = make_unique<Button>(X_leftArrowButton, Y_leftArrowButton, Width_leftArrowButton, Height_leftArrowButton, Background_leftArrowButton, BackgroundHover_leftArrowButton);
     UI_Maps[UIObject::EXIT_LABEL_UI] = make_unique<Label>(X_exitLabel, Y_exitLabel, Text_exitLabel, Color_exitLabel, HoverColor_exitLabel);
+    UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_leftArrowSymbol, Y_leftArrowSymbol, Width_leftArrowSymbol, Height_leftArrowSymbol, Type_leftArrowSymbol);
 }
 
 void UI_Manager::draw()
@@ -87,8 +122,10 @@ void UI_Manager::draw()
 	glLoadIdentity();
 	// Vẽ các thành phần UI 2D
     UI_Maps[UIObject::EXIT_BUTTON_UI]->draw();
-    UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
+    UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->draw();
 
+    UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
+    UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->draw();
 	// Khôi phục projection matrix và modelview matrix
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -103,10 +140,14 @@ void UI_Manager::draw()
 void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
 {
     UI_Maps[UIObject::EXIT_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    
     UI_Maps[UIObject::EXIT_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::EXIT_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered());
 }
 
 //all destructor
 UI_Manager::~UI_Manager(){}
 Button::~Button(){}
 Label::~Label(){}
+Symbol::~Symbol(){}
