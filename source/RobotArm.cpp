@@ -40,14 +40,14 @@ RobotArm::RobotArm()
     fingerHeight = 0.5;
     fingerThickness = 0.5;
     fingerDistance = 1;
-    angleFingerLeftHand1_Open = make_pair(90.0, 270.0);
-    angleFingerLeftHand2_Open = make_pair(90.0, 270.0);
-    angleFingerRightHand1_Open = make_pair(90.0, 270.0);
-    angleFingerRightHand2_Open = make_pair(90.0, 270.0);
-    angleFingerRightHand1_Close = make_pair(90.0, 180.0);
-    angleFingerRightHand2_Close = make_pair(90.0, 180.0);
-    angleFingerLeftHand1_Close = make_pair(90.0, 180.0);
-    angleFingerLeftHand2_Close = make_pair(90.0, 180.0);
+    angleFingerLeftHand1_Open = make_pair(-30.0, 150.0);
+    angleFingerLeftHand2_Open = make_pair(30.0, 210.0);
+    angleFingerRightHand1_Open = make_pair(-30.0, 150.0);
+    angleFingerRightHand2_Open = make_pair(30.0, 210.0);
+    angleFingerRightHand1_Close = make_pair(-90.0, 90.0);
+    angleFingerRightHand2_Close = make_pair(90.0, 270.0);
+    angleFingerLeftHand1_Close = make_pair(-90.0, 90.0);
+    angleFingerLeftHand2_Close = make_pair(90.0, 270.0);
 
     //container
     containerLength = 2;
@@ -72,7 +72,7 @@ RobotArm::RobotArm()
     //set value
     normalBase.setValue(0,0,1);
     centerBodyPoint.setValue(0, 0, bodyZPosition);
-    containerPoint.setValue(10, 10, 8);
+    containerPoint.setValue(8.5, 8.5, 8);
 
     robotDirectionXY_Vertical.vertical(angleX);
     robotDirectionXY_Horizontal.horizontal(robotDirectionXY_Vertical);
