@@ -33,6 +33,12 @@ const float ROTATE = 0.5;
 const double PI = 3.14193;
 const int NUM_SEGMENTS = 30;
 
+enum UIObject
+{
+    
+    TOTAL_OBJECT
+};
+
 enum TypeButtonOver
 {
     EXIT_BUTTON,

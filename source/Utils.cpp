@@ -44,12 +44,12 @@ void drawButton(float x, float y, float width, float height, Color background, C
         glVertex2f(x, y + height);
     glEnd();
 
-    setColor(textColor);
-    glRasterPos2f(x + width / 2 - glutBitmapLength(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)text) / 2, y + height / 2 - 6); // Căn giữa text
-    for (const char* c = text; *c != '\0'; c++)
-    {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
-    }
+    // setColor(textColor);
+    // glRasterPos2f(x + width / 2 - glutBitmapLength(GLUT_BITMAP_HELVETICA_18, (const unsigned char*)text) / 2, y + height / 2 - 6); // Căn giữa text
+    // for (const char* c = text; *c != '\0'; c++)
+    // {
+    //     glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
+    // }
 }
 
 void drawWireSphere(Point center, float radius, Color color)
