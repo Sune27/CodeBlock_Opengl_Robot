@@ -2,56 +2,38 @@
 #include "../include/Config.h"
 using namespace std;
 
-void drawHand(int x, int y, int width, int height, Color color) 
+// Hàm vẽ một hình chữ nhật bo tròn (đơn giản hóa)
+void drawArcSegment(float centerX, float centerY, float radius, float startAngle, float endAngle, int segments)
 {
-    // Thiết lập màu
+    glBegin(GL_LINE_STRIP); // Sử dụng GL_LINE_STRIP để nối các đoạn thẳng
+    for (int i = 0; i <= segments; ++i) {
+      float angle = startAngle + (endAngle - startAngle) * i / segments;
+      float x = centerX + radius * cosf(angle);
+      float y = centerY + radius * sinf(angle);
+      glVertex2f(x, y);
+    }
+    glEnd();
+}
+void drawOpenU(int x, int y, int width, int height, Color color)
+{
+    // Thiết lập màu vẽ
     setColor(color);
 
-    // Các tham số tỷ lệ (để bàn tay nằm trong ô)
-    float palmWidth = width * 0.6f;
-    float palmHeight = height * 0.5f;
-    float fingerLength = height * 0.3f;
-    float fingerWidth = width * 0.1f;
+    // Tính toán các tham số
+    float centerX = x + width / 2.0f;
+    float centerY = y + height / 2.0f;
+    float radius = std::min(width, height) / 2.0f * 0.8f; // Bán kính, nhỏ hơn để có khoảng trống
+    int segments = 30; // Số lượng đoạn thẳng để vẽ cung
 
-    // Vẽ lòng bàn tay (hình chữ nhật)
-    float palmX = x + width * 0.2f;
-    float palmY = y;
+    // Độ hở giữa hai cung
+    float gapAngle = 60.0; // Ví dụ: 5 độ
 
-    glBegin(GL_QUADS);
-        glVertex2f(palmX, palmY);
-        glVertex2f(palmX + palmWidth, palmY);
-        glVertex2f(palmX + palmWidth, palmY + palmHeight);
-        glVertex2f(palmX, palmY + palmHeight);
-    glEnd();
+    // Vẽ cung bên trái
+    drawArcSegment(centerX, centerY, radius, 180 + gapAngle, 270, segments); // Bắt đầu từ 180 độ (bên trái)
 
-
-    // Vẽ các ngón tay (các hình chữ nhật nhỏ)
-    for (int i = 0; i < 4; ++i) {
-        float fingerX = palmX + palmWidth * (i / 3.0f) - fingerWidth/2; //khoảng cách đều các ngón tay
-        float fingerY = palmY + palmHeight;
-
-        glBegin(GL_QUADS);
-            glVertex2f(fingerX, fingerY);
-            glVertex2f(fingerX + fingerWidth, fingerY);
-            glVertex2f(fingerX + fingerWidth, fingerY + fingerLength);
-            glVertex2f(fingerX, fingerY + fingerLength);
-        glEnd();
-    }
-
-    //Vẽ ngón tay cái (hình chữ nhật nghiêng)
-     float thumbWidth = width * 0.15f;
-     float thumbLength = height * 0.25f;
-     float thumbX = palmX - thumbWidth/2 ;
-     float thumbY = palmY + palmHeight * 0.2f; //vị trí ngón tay cái
-
-     glBegin(GL_QUADS);
-         glVertex2f(thumbX, thumbY);
-         glVertex2f(thumbX + thumbWidth, thumbY + thumbLength/2); //nghiêng
-         glVertex2f(thumbX + thumbWidth, thumbY + thumbLength/2 + thumbLength); //nghiêng
-         glVertex2f(thumbX, thumbY + thumbLength);
-     glEnd();
+    // Vẽ cung bên phải
+    drawArcSegment(centerX, centerY, radius, 270, 360 - gapAngle , segments);  // Đến 360 độ (bên phải)
 }
-
 void drawArrow(int x, int y, int width, int height, int direction, Color color)
 {
     // Thiết lập màu đen
