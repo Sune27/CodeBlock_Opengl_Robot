@@ -53,7 +53,13 @@ const int Width_rightHandButton = 100;
 const int Height_rightHandButton = 100;
 const Color Background_rightHandButton = GREEN;
 const Color BackgroundHover_rightHandButton = LIGHT_GRAY;
-
+//left hand button
+const int X_leftHandButton = 50;
+const int Y_leftHandButton = 200;
+const int Width_leftHandButton = 100;
+const int Height_leftHandButton = 100;
+const Color Background_leftHandButton = GREEN;
+const Color BackgroundHover_leftHandButton = LIGHT_GRAY;
 
 //left arrow symbol
 const int X_leftArrowSymbol = 500;
@@ -85,4 +91,10 @@ const int Y_rightHandSymbol = 50;
 const int Width_rightHandSymbol = 100;
 const int Height_rightHandSymbol = 100;
 const string Type_rightHandSymbol = "RIGHT_HAND";
+//left hand symbol
+const int X_leftHandSymbol = 50;
+const int Y_leftHandSymbol = 200;
+const int Width_leftHandSymbol = 100;
+const int Height_leftHandSymbol = 100;
+const string Type_leftHandSymbol = "LEFT_HAND";
 #endif

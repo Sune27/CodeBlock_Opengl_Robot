@@ -2,7 +2,23 @@
 #include "../include/Config.h"
 using namespace std;
 
-// Hàm vẽ một hình chữ nhật bo tròn (đơn giản hóa)
+void drawX(int x, int y, int width, int height, Color color)
+{
+    // Thiết lập màu đỏ
+    setColor(RED);
+
+    // Vẽ đường chéo từ góc trên bên trái đến góc dưới bên phải
+    glBegin(GL_LINES);
+        glVertex2i(x, y + height); // Góc trên bên trái
+        glVertex2i(x + width, y);    // Góc dưới bên phải
+    glEnd();
+
+    // Vẽ đường chéo từ góc dưới bên trái đến góc trên bên phải
+    glBegin(GL_LINES);
+        glVertex2i(x, y);          // Góc dưới bên trái
+        glVertex2i(x + width, y + height); // Góc trên bên phải
+    glEnd();
+}
 void drawArcSegment(float centerX, float centerY, float radius, float startAngle, float endAngle, int segments)
 {
     glBegin(GL_LINE_STRIP); // Sử dụng GL_LINE_STRIP để nối các đoạn thẳng
@@ -14,6 +30,7 @@ void drawArcSegment(float centerX, float centerY, float radius, float startAngle
     }
     glEnd();
 }
+
 void drawOpenU(int x, int y, int width, int height, Color color)
 {
     // Thiết lập màu vẽ

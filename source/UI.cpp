@@ -98,7 +98,7 @@ void Symbol::draw()
         drawArrow(x, y, width, height, 3, currentColor);
     else if(type == "DOWN_ARROW")
         drawArrow(x, y, width, height, 4, currentColor);
-    else if(type == "RIGHT_HAND")
+    else if(type == "RIGHT_HAND" || type == "LEFT_HAND")
         drawOpenU(x, y, width, height, currentColor);
 }
 
@@ -111,7 +111,8 @@ UI_Manager::UI_Manager()
     UI_Maps[UIObject::UP_ARROW_BUTTON_UI] = make_unique<Button>(X_upArrowButton, Y_upArrowButton, Width_upArrowButton, Height_upArrowButton, Background_upArrowButton, BackgroundHover_upArrowButton);
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI] = make_unique<Button>(X_downArrowButton, Y_downArrowButton, Width_downArrowButton, Height_downArrowButton, Background_downArrowButton, BackgroundHover_downArrowButton);
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI] = make_unique<Button>(X_rightHandButton, Y_rightHandButton, Width_rightHandButton, Height_rightHandButton, Background_rightHandButton, BackgroundHover_rightHandButton);
-
+    UI_Maps[UIObject::LEFT_HAND_BUTTON_UI] = make_unique<Button>(X_leftHandButton, Y_leftHandButton, Width_leftHandButton, Height_leftHandButton, Background_leftHandButton, BackgroundHover_leftHandButton);
+    
     UI_Maps[UIObject::EXIT_LABEL_UI] = make_unique<Label>(X_exitLabel, Y_exitLabel, Text_exitLabel, Color_exitLabel, HoverColor_exitLabel);
     
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_leftArrowSymbol, Y_leftArrowSymbol, Width_leftArrowSymbol, Height_leftArrowSymbol, Type_leftArrowSymbol);
@@ -119,6 +120,7 @@ UI_Manager::UI_Manager()
     UI_Maps[UIObject::UP_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_upArrowSymbol, Y_upArrowSymbol, Width_upArrowSymbol, Height_upArrowSymbol, Type_upArrowSymbol);
     UI_Maps[UIObject::DOWN_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_downArrowSymbol, Y_downArrowSymbol, Width_downArrowSymbol, Height_downArrowSymbol, Type_downArrowSymbol);
     UI_Maps[UIObject::RIGHT_HAND_SYMBOL_UI] = make_unique<Symbol>(X_rightHandSymbol, Y_rightHandSymbol, Width_rightHandSymbol, Height_rightHandSymbol, Type_rightHandSymbol);
+    UI_Maps[UIObject::LEFT_HAND_SYMBOL_UI] = make_unique<Symbol>(X_leftHandSymbol, Y_leftHandSymbol, Width_leftHandSymbol, Height_leftHandSymbol, Type_leftHandSymbol);
 }
 
 void UI_Manager::draw()
@@ -139,6 +141,7 @@ void UI_Manager::draw()
     UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->draw();
+    UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->draw();
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->draw();
@@ -146,6 +149,7 @@ void UI_Manager::draw()
     UI_Maps[UIObject::UP_ARROW_SYMBOL_UI]->draw();
     UI_Maps[UIObject::DOWN_ARROW_SYMBOL_UI]->draw();
     UI_Maps[UIObject::RIGHT_HAND_SYMBOL_UI]->draw();
+    UI_Maps[UIObject::LEFT_HAND_SYMBOL_UI]->draw();
 	// Khôi phục projection matrix và modelview matrix
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
@@ -165,13 +169,17 @@ void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
     UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::EXIT_BUTTON_UI]->getStatusHovered());
+    
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::UP_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::DOWN_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::RIGHT_HAND_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::LEFT_HAND_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getStatusHovered());
+
 }
 
 //all destructor

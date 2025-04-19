@@ -239,6 +239,7 @@ struct Point
     }
 };
 
+void drawX(int x, int y, int width, int height, Color color);
 void drawArcSegment(float centerX, float centerY, float radius, float startAngle, float endAngle, int segments);
 void drawOpenU(int x, int y, int width, int height, Color color);
 void drawArrow(int x, int y, int width, int height, int direction, Color color);
