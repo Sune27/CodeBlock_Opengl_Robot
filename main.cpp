@@ -136,6 +136,18 @@ void mouseFunc(int button, int state, int x, int y)
 			{
 				specialKeys[GLUT_KEY_DOWN] = true;
 			}
+			else if(
+				widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getStatusHovered()
+			&& widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getDisable() == false
+			&& robotArm.getStatus(RIGHT_HAND_CLAWING) == false
+			)
+			robotArm.changeStatus(LEFT_HAND_CLAWING);
+			else if(
+				widget.UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->getStatusHovered()
+			&& widget.UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->getDisable() == false
+			&& robotArm.getStatus(LEFT_HAND_CLAWING) == false
+			)
+			robotArm.changeStatus(RIGHT_HAND_CLAWING);
 
         }
 		else if (state == GLUT_UP)

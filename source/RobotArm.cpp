@@ -163,12 +163,12 @@ void RobotArm::update()
     //container
     distanceContainerToLeft = distanceTwoPoint(containerPoint, centerLeftHandPoint);
     distanceContainerToRight = distanceTwoPoint(containerPoint, centerRightHandPoint);
-    if(distanceContainerToLeft <= DISTANCE_LIMIT && isLeftHandClaw == false && isRightHandClaw == false)
+    if(distanceContainerToLeft <= DISTANCE_LIMIT)
     {
         canLeftHandClaw = true;
     }
     else canLeftHandClaw = false;
-    if(distanceContainerToRight <= DISTANCE_LIMIT && isLeftHandClaw == false && isRightHandClaw == false)
+    if(distanceContainerToRight <= DISTANCE_LIMIT)
     {
         canRightHandClaw = true;
     }else canRightHandClaw = false;
