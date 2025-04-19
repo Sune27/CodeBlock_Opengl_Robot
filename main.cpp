@@ -216,7 +216,7 @@ void specialFunc(int key, int x, int y)
 	if(key == GLUT_KEY_F1)
 	{
 		if(robotArm.getStatus(LEFT_HAND_CLAWING) == false)
-		robotArm.changeStatus(RIGHT_HAND_CLAWING);
+            robotArm.changeStatus(RIGHT_HAND_CLAWING);
 	}
 	else
 	{

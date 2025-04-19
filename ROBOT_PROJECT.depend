@@ -73,7 +73,7 @@
 1744944172 source:d:\code\cpp\opengl_codeblocks\robot_project\source\console.cpp
 	"Console.h"
 
-1745058073 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
+1745058817 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
 	<GL/glut.h>
 
 1745040267 d:\code\cpp\opengl_codeblocks\robot_project\include\utils.h
@@ -100,7 +100,7 @@
 	"Config.h"
 	"Utils.h"
 
-1745057102 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
+1745058617 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
 	"../include/RobotArm.h"
 
 1744980945 source:d:\code\cpp\opengl_codeblocks\robot_project\source\userinterface.cpp

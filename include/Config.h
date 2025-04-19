@@ -31,7 +31,7 @@ const float ANGLEZLONGARM_MIN = 0;
 const double DISTANCE_LIMIT = 3.0;
 const double SIZE_FLOOR = 20.0;
 const int DIVISION_FLOOR = 20.0;
-const float ROTATE = 0.5;
+const float ROTATE = 0.05;
 
 const double PI = 3.14193;
 const int NUM_SEGMENTS = 30;
