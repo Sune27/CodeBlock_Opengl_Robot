@@ -72,7 +72,7 @@ RobotArm::RobotArm()
     //set value
     normalBase.setValue(0,0,1);
     centerBodyPoint.setValue(0, 0, bodyZPosition);
-    containerPoint.setValue(8.5, 8.5, 8);
+    containerPoint.setValue(8.5, 8.5, 9);
 
     robotDirectionXY_Vertical.vertical(angleX);
     robotDirectionXY_Horizontal.horizontal(robotDirectionXY_Vertical);
