@@ -4,12 +4,10 @@
 	<ActiveTarget name="Debug" />
 	<File name="include\Config.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+<<<<<<< Updated upstream
 			<Cursor1 position="1043" topLine="98" />
-		</Cursor>
-	</File>
-	<File name="source\UI.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="397" topLine="0" />
+=======
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\Console.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -17,19 +15,60 @@
 			<Cursor1 position="31" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\RobotArm.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\UI.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="54" />
+			<Cursor1 position="671" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="source\RobotArm.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2679" topLine="69" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4463" topLine="151" />
+>>>>>>> Stashed changes
+		</Cursor>
+	</File>
+	<File name="source\UI.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="397" topLine="0" />
+		</Cursor>
+	</File>
+<<<<<<< Updated upstream
+	<File name="source\Console.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="31" topLine="0" />
+=======
+	<File name="include\Config.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="660" topLine="0" />
+>>>>>>> Stashed changes
+		</Cursor>
+	</File>
+	<File name="include\RobotArm.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+<<<<<<< Updated upstream
 	<File name="include\Utils.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="236" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+=======
+	<File name="include\UI_Attributes.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+>>>>>>> Stashed changes
 		<Cursor>
-			<Cursor1 position="4877" topLine="164" />
+			<Cursor1 position="152" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Utils.h" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="66" />
 		</Cursor>
 	</File>
 	<File name="include\UI_Attributes.h" open="1" top="1" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -49,12 +88,16 @@
 	</File>
 	<File name="source\Utils.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+<<<<<<< Updated upstream
 			<Cursor1 position="725" topLine="873" />
 		</Cursor>
 	</File>
 	<File name="source\RobotArm.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2169" topLine="397" />
+=======
+			<Cursor1 position="725" topLine="0" />
+>>>>>>> Stashed changes
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

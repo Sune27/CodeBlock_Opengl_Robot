@@ -77,6 +77,7 @@ void display()
 
 	robotArm.draw();
 	widget.draw();
+	drawHand(50, 50, 100, 100, BLUE);
 	checkEventKeyboard();
 	checkEventSpecialKeys();
 
