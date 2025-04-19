@@ -320,11 +320,23 @@ void RobotArm::checkMinValueAngle()
 {
     if(angleZ < ANGLEZ_MIN) angleZ = ANGLEZ_MIN;
     if(angleLeftShortArm < ANGLESHORTARM_MIN) angleLeftShortArm = ANGLESHORTARM_MIN;
+    else if(angleRightShortArm < ANGLESHORTARM_MIN) angleRightShortArm = ANGLESHORTARM_MIN;
+    if(angleXLeftLongArm < ANGLEXLONGARM_MIN) angleXLeftLongArm = ANGLEXLONGARM_MIN;
+    else if(angleXRightLongArm < ANGLEXLONGARM_MIN) angleXRightLongArm = ANGLEXLONGARM_MIN;
+    if(angleZLeftLongArm < ANGLEZLONGARM_MIN) angleZLeftLongArm = ANGLEZLONGARM_MIN;
+    else if(angleZRightLongArm < ANGLEZLONGARM_MIN) angleZRightLongArm = ANGLEZLONGARM_MIN;
+
 }
 void RobotArm::checkMaxValueAngle()
 {
     if(angleZ > ANGLEZ_MAX) angleZ = ANGLEZ_MAX;
     if(angleLeftShortArm > ANGLESHORTARM_MAX) angleLeftShortArm = ANGLESHORTARM_MAX;
+    else if(angleRightShortArm > ANGLESHORTARM_MAX) angleRightShortArm = ANGLESHORTARM_MAX;
+    if(angleXLeftLongArm > ANGLEXLONGARM_MAX) angleXLeftLongArm = ANGLEXLONGARM_MAX;
+    else if(angleXRightLongArm > ANGLEXLONGARM_MAX) angleXRightLongArm = ANGLEXLONGARM_MAX;
+    if(angleZLeftLongArm > ANGLEZLONGARM_MAX) angleZLeftLongArm = ANGLEZLONGARM_MAX;
+    else if(angleZRightLongArm > ANGLEZLONGARM_MAX) angleZRightLongArm = ANGLEZLONGARM_MAX;
+
 }
 RobotArm::~RobotArm()
 {
