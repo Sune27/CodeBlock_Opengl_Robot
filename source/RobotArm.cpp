@@ -222,29 +222,29 @@ void RobotArm::drawContainer()
 void RobotArm::drawRobotHand()
 {
     drawSolidSphere(leftWristPoint, wristRadius, wrist_Color);
-    drawWireSphere(leftWristPoint, wristRadius, wrist_OutlineColor);
     drawSolidSphere(rightWristPoint, wristRadius, wrist_Color);
+    drawWireSphere(leftWristPoint, wristRadius, wrist_OutlineColor);
     drawWireSphere(rightWristPoint, wristRadius, wrist_OutlineColor);
     if(isHandOpen == true)
     {
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerLeftHand1Point, leftHandDirection, fingerDisableClaw_Color, angleFingerLeftHand1_Open.first, angleFingerLeftHand1_Open.second);
-        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand1Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand1_Open.first, angleFingerLeftHand1_Open.second);
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerLeftHand2Point, leftHandDirection, fingerDisableClaw_Color, angleFingerLeftHand2_Open.first, angleFingerLeftHand2_Open.second);
-        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand2Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand2_Open.first, angleFingerLeftHand2_Open.second);
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerRightHand1Point, rightHandDirection, fingerDisableClaw_Color, angleFingerRightHand1_Open.first, angleFingerRightHand1_Open.second);
-        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerRightHand1Point, rightHandDirection, fingerDisableClaw_OutlineColor, angleFingerRightHand1_Open.first, angleFingerRightHand1_Open.second);
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerRightHand2Point, rightHandDirection, fingerDisableClaw_Color, angleFingerRightHand2_Open.first, angleFingerRightHand2_Open.second);
+        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand1Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand1_Open.first, angleFingerLeftHand1_Open.second);
+        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand2Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand2_Open.first, angleFingerLeftHand2_Open.second);
+        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerRightHand1Point, rightHandDirection, fingerDisableClaw_OutlineColor, angleFingerRightHand1_Open.first, angleFingerRightHand1_Open.second);
         drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerRightHand2Point, rightHandDirection, fingerDisableClaw_OutlineColor, angleFingerRightHand2_Open.first, angleFingerRightHand2_Open.second);
     }
     else
     {
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerLeftHand1Point, leftHandDirection, fingerDisableClaw_Color, angleFingerLeftHand1_Close.first, angleFingerLeftHand1_Close.second);
-        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand1Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand1_Close.first, angleFingerLeftHand1_Close.second);
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerLeftHand2Point, leftHandDirection, fingerDisableClaw_Color, angleFingerLeftHand2_Close.first, angleFingerLeftHand2_Close.second);
-        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand2Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand2_Close.first, angleFingerLeftHand2_Close.second);
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerRightHand1Point, rightHandDirection, fingerDisableClaw_Color, angleFingerRightHand1_Close.first, angleFingerRightHand1_Close.second);
-        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerRightHand1Point, rightHandDirection, fingerDisableClaw_OutlineColor, angleFingerRightHand1_Close.first, angleFingerRightHand1_Close.second);
         drawMissingCylinder(fingerRadius, fingerHeight, fingerThickness, fingerRightHand2Point, rightHandDirection, fingerDisableClaw_Color, angleFingerRightHand2_Close.first, angleFingerRightHand2_Close.second);
+        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand1Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand1_Close.first, angleFingerLeftHand1_Close.second);
+        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerLeftHand2Point, leftHandDirection, fingerDisableClaw_OutlineColor, angleFingerLeftHand2_Close.first, angleFingerLeftHand2_Close.second);
+        drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerRightHand1Point, rightHandDirection, fingerDisableClaw_OutlineColor, angleFingerRightHand1_Close.first, angleFingerRightHand1_Close.second);
         drawMissingCylinderOutline(fingerRadius, fingerHeight, fingerRightHand2Point, rightHandDirection, fingerDisableClaw_OutlineColor, angleFingerRightHand2_Close.first, angleFingerRightHand2_Close.second);
 
     }
@@ -252,12 +252,12 @@ void RobotArm::drawRobotHand()
 void RobotArm::drawRobotLongArm()
 {
     drawSolidSphere(leftHingePoint, hingeRadius, hinge_Color);
-    drawWireSphere(leftHingePoint, hingeRadius, hinge_OutlineColor);
     drawSolidSphere(rightHingePoint, hingeRadius, hinge_Color);
+    drawWireSphere(leftHingePoint, hingeRadius, hinge_OutlineColor);
     drawWireSphere(rightHingePoint, hingeRadius, hinge_OutlineColor);
     drawCylinderWithCaps(longArmRadius, longArmLength, longArmRadius, leftLongArmPoint, leftLongArmDirection, longArm_Color);
-    drawCylinderOutline(longArmRadius, longArmLength, leftLongArmPoint, leftLongArmDirection, longArm_OutlineColor);
     drawCylinderWithCaps(longArmRadius, longArmLength, longArmRadius, rightLongArmPoint, rightLongArmDirection, longArm_Color);
+    drawCylinderOutline(longArmRadius, longArmLength, leftLongArmPoint, leftLongArmDirection, longArm_OutlineColor);
     drawCylinderOutline(longArmRadius, longArmLength, rightLongArmPoint, rightLongArmDirection, longArm_OutlineColor);
 }
 void RobotArm::drawRobotShortArm()
@@ -271,8 +271,8 @@ void RobotArm::drawRobotShortArm()
 void RobotArm::drawRobotJoint()
 {
     drawSolidSphere(leftArmJointPoint, jointRadius, joint_Color);
-    drawWireSphere(leftArmJointPoint, jointRadius, joint_OutlineColor);
     drawSolidSphere(rightArmJointPoint, jointRadius, joint_Color);
+    drawWireSphere(leftArmJointPoint, jointRadius, joint_OutlineColor);
     drawWireSphere(rightArmJointPoint, jointRadius, joint_OutlineColor);
 }
 void RobotArm::drawRobotBody()
@@ -321,10 +321,10 @@ void RobotArm::checkMinValueAngle()
     if(angleZ < ANGLEZ_MIN) angleZ = ANGLEZ_MIN;
     if(angleLeftShortArm < ANGLESHORTARM_MIN) angleLeftShortArm = ANGLESHORTARM_MIN;
     else if(angleRightShortArm < ANGLESHORTARM_MIN) angleRightShortArm = ANGLESHORTARM_MIN;
-    if(angleXLeftLongArm < ANGLEXLONGARM_MIN) angleXLeftLongArm = ANGLEXLONGARM_MIN;
-    else if(angleXRightLongArm < ANGLEXLONGARM_MIN) angleXRightLongArm = ANGLEXLONGARM_MIN;
-    if(angleZLeftLongArm < ANGLEZLONGARM_MIN) angleZLeftLongArm = ANGLEZLONGARM_MIN;
-    else if(angleZRightLongArm < ANGLEZLONGARM_MIN) angleZRightLongArm = ANGLEZLONGARM_MIN;
+    // if(angleXLeftLongArm < ANGLEXLONGARM_MIN) angleXLeftLongArm = ANGLEXLONGARM_MIN;
+    // else if(angleXRightLongArm < ANGLEXLONGARM_MIN) angleXRightLongArm = ANGLEXLONGARM_MIN;
+    // if(angleZLeftLongArm < ANGLEZLONGARM_MIN) angleZLeftLongArm = ANGLEZLONGARM_MIN;
+    // else if(angleZRightLongArm < ANGLEZLONGARM_MIN) angleZRightLongArm = ANGLEZLONGARM_MIN;
 
 }
 void RobotArm::checkMaxValueAngle()
@@ -332,10 +332,10 @@ void RobotArm::checkMaxValueAngle()
     if(angleZ > ANGLEZ_MAX) angleZ = ANGLEZ_MAX;
     if(angleLeftShortArm > ANGLESHORTARM_MAX) angleLeftShortArm = ANGLESHORTARM_MAX;
     else if(angleRightShortArm > ANGLESHORTARM_MAX) angleRightShortArm = ANGLESHORTARM_MAX;
-    if(angleXLeftLongArm > ANGLEXLONGARM_MAX) angleXLeftLongArm = ANGLEXLONGARM_MAX;
-    else if(angleXRightLongArm > ANGLEXLONGARM_MAX) angleXRightLongArm = ANGLEXLONGARM_MAX;
-    if(angleZLeftLongArm > ANGLEZLONGARM_MAX) angleZLeftLongArm = ANGLEZLONGARM_MAX;
-    else if(angleZRightLongArm > ANGLEZLONGARM_MAX) angleZRightLongArm = ANGLEZLONGARM_MAX;
+    // if(angleXLeftLongArm > ANGLEXLONGARM_MAX) angleXLeftLongArm = ANGLEXLONGARM_MAX;
+    // else if(angleXRightLongArm > ANGLEXLONGARM_MAX) angleXRightLongArm = ANGLEXLONGARM_MAX;
+    // if(angleZLeftLongArm > ANGLEZLONGARM_MAX) angleZLeftLongArm = ANGLEZLONGARM_MAX;
+    // else if(angleZRightLongArm > ANGLEZLONGARM_MAX) angleZRightLongArm = ANGLEZLONGARM_MAX;
 
 }
 RobotArm::~RobotArm()
