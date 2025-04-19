@@ -95,9 +95,7 @@ void reshape(int w, int h)
 void keyboardFunc(unsigned char key, int x, int y)
 {
 
-	if(key == 32)
-		robotArm.changeStatus(HAND_OPEN);
-	else if(key == '=')
+	if(key == '=')
 		robotArm.changeStatus(SHOW_DIRECTION);
 	else if(key == '+')
 	{
@@ -230,11 +228,11 @@ void checkEventSpecialKeys()
 	float rotate = 0.01;
 
 	if(specialKeys[GLUT_KEY_LEFT])
-		normalizeAngle(cameraAngle += rotate);
+		normalizeAngle(cameraAngle += rotate/10);
 	else if(specialKeys[GLUT_KEY_RIGHT])
-		normalizeAngle(cameraAngle -= rotate);
+		normalizeAngle(cameraAngle -= rotate/10);
 	if(specialKeys[GLUT_KEY_UP])
-		cameraAngleZ += rotate;
+		cameraAngleZ += rotate*10;
 	if(specialKeys[GLUT_KEY_DOWN])
-		cameraAngleZ -= rotate;
+		cameraAngleZ -= rotate*10;
 }
