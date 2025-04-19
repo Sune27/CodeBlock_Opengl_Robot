@@ -100,6 +100,8 @@ void RobotArm::printAttributes()
     cout << boolalpha;
     cout << "isLeftHandClaw: " << isLeftHandClaw << endl;
     cout << "isRightHandClaw: " << isRightHandClaw << endl;
+    cout << "distanceContainerToLeft: " << distanceContainerToLeft << endl;
+    cout << "distanceContainerToRight: " << distanceContainerToRight << endl;
 }
 
 void RobotArm::update()
@@ -159,6 +161,18 @@ void RobotArm::update()
     fingerRightHand1Point.move(othorgonalRightHandDirection, fingerDistance);
     fingerRightHand2Point.move(othorgonalRightHandDirection, -fingerDistance);
     //container
+    distanceContainerToLeft = distanceTwoPoint(containerPoint, centerLeftHandPoint);
+    distanceContainerToRight = distanceTwoPoint(containerPoint, centerRightHandPoint);
+    if(distanceContainerToLeft <= DISTANCE_LIMIT && isLeftHandClaw == false && isRightHandClaw == false)
+    {
+        canLeftHandClaw = true;
+    }
+    else canLeftHandClaw = false;
+    if(distanceContainerToRight <= DISTANCE_LIMIT && isLeftHandClaw == false && isRightHandClaw == false)
+    {
+        canRightHandClaw = true;
+    }else canRightHandClaw = false;
+
 }
 
 void RobotArm::draw()
@@ -363,6 +377,10 @@ bool RobotArm::getStatus(TypeStatus status)
         return isLeftHandClaw;
     case RIGHT_HAND_CLAWING:
         return isRightHandClaw;
+    case CAN_RIGHT_HAND_CLAW:
+        return canRightHandClaw;
+    case CAN_LEFT_HAND_CLAW:
+        return canLeftHandClaw;
     default:
         break;
     }

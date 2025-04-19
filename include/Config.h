@@ -28,6 +28,7 @@ const float ANGLEXLONGARM_MAX = 25.0;
 const float ANGLEXLONGARM_MIN = -60.0;
 const float ANGLEZLONGARM_MAX = 90;
 const float ANGLEZLONGARM_MIN = 0;
+const double DISTANCE_LIMIT = 2.0;
 const double SIZE_FLOOR = 20.0;
 const int DIVISION_FLOOR = 20.0;
 const float ROTATE = 0.5;
@@ -71,6 +72,8 @@ enum TypeStatus
     SHOW_OBJECT_STATUS,
     LEFT_HAND_CLAWING,
     RIGHT_HAND_CLAWING,
+    CAN_LEFT_HAND_CLAW,
+    CAN_RIGHT_HAND_CLAW,
 
     TOTAL_STATUS
 };

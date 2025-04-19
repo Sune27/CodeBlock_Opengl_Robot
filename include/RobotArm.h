@@ -64,6 +64,8 @@ private:
     bool isHandOpen;
     bool isLeftHandClaw;
     bool isRightHandClaw;
+    bool canLeftHandClaw;
+    bool canRightHandClaw;
     //base
     float angleX;
     float angleZ;
@@ -105,7 +107,8 @@ private:
 
     //container
     float containerLength;
-    double distanceContainer;
+    double distanceContainerToLeft;
+    double distanceContainerToRight;
 
     Color body_Color;
     Color body_OutlineColor;

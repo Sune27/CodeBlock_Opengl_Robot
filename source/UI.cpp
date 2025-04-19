@@ -2,12 +2,21 @@
 
 using namespace std;
 //ui elements
-UI_Elements::UI_Elements(){}
+UI_Elements::UI_Elements(){disable = false;}
 UI_Elements::~UI_Elements(){}
 void UI_Elements::draw(){}
 void UI_Elements::buttonOver(int mouseX, int mouseY){};
 bool UI_Elements::getStatusHovered(){}
 void UI_Elements::setStatusHovered(bool status){}
+bool UI_Elements::getDisable()
+{
+    return disable;
+}
+void UI_Elements::setDisable(bool status)
+{
+    disable = status;
+}
+
 //label
 Label::Label(){}
 Label::Label(int x, int y, string text, Color color, Color hoverColor)
@@ -19,7 +28,6 @@ Label::Label(int x, int y, string text, Color color, Color hoverColor)
     this->hoverColor = hoverColor;
     this->isButtonHovered = false;
 }
-
 void Label::draw()
 {
     if(isButtonHovered)
@@ -46,7 +54,6 @@ Button::Button(int x, int y, int width, int height, Color background, Color back
     this->background_hover = backgroundHover;
     this->isHovered = false;
 }
-
 void Button::draw()
 {
     if(isHovered)
@@ -57,6 +64,10 @@ void Button::draw()
     {
         drawButton(x, y, width, height, background);
     }
+    if(isDisable == true)
+    {
+        drawX(x, y, width, height, background);
+    }
 }
 
 bool Button::getStatusHovered()
@@ -66,6 +77,14 @@ bool Button::getStatusHovered()
 void Button::buttonOver(int mouseX, int mouseY)
 {
     isHovered = (mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height);
+}
+void Button::setDisable(bool status)
+{
+    isDisable = status;
+}
+bool Button::getDisable()
+{
+    return isDisable;
 }
 
 //Symbol
@@ -81,7 +100,6 @@ Symbol::Symbol(int x, int y, int width, int height, string type)
     this->hoverColor = GRAY;
     this->isButtonHovered = false;
 }
-
 void Symbol::setStatusHovered(bool status)
 {
     isButtonHovered = status;
@@ -100,6 +118,7 @@ void Symbol::draw()
         drawArrow(x, y, width, height, 4, currentColor);
     else if(type == "RIGHT_HAND" || type == "LEFT_HAND")
         drawOpenU(x, y, width, height, currentColor);
+    
 }
 
 //UI manager
@@ -142,6 +161,10 @@ void UI_Manager::draw()
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->draw();
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->draw();
+
+    cout << boolalpha;
+    cout << UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getDisable() << endl;
+    cout << UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->getDisable() << endl;
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->draw();

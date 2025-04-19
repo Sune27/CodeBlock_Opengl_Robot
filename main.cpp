@@ -190,6 +190,8 @@ void checkEventKeyboard()
 	if(keys['x'])
 		robotArm.rotateAngle(ANGLE_X, -ROTATE);
 
+	widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_LEFT_HAND_CLAW));
+	widget.UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_RIGHT_HAND_CLAW));
 	robotArm.checkMinValueAngle();
 	robotArm.checkMaxValueAngle();
 	glutPostRedisplay();

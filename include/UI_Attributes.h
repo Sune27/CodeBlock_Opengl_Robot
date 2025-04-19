@@ -97,4 +97,5 @@ const int Y_leftHandSymbol = 200;
 const int Width_leftHandSymbol = 100;
 const int Height_leftHandSymbol = 100;
 const string Type_leftHandSymbol = "LEFT_HAND";
+
 #endif
