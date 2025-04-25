@@ -20,6 +20,7 @@ const float LINE_WIDTH = 5.0;
 const float THICKNESS = 0.2;
 const float INITIAL_ANGLE = 45.0;
 const float DIRECTION_LENGTH = 20.0;
+const float CAMERA_ANGLE_Z_MIN = -18;
 const float ANGLEZ_MIN = 55;
 const float ANGLEZ_MAX = 85;
 const float ANGLESHORTARM_MIN = 35.0;

@@ -187,7 +187,7 @@ void motion(int x, int y)
         // Cập nhật góc camera
         cameraAngle += deltaX * 0.01;  // Điều chỉnh tốc độ xoay
         cameraAngleZ += deltaY * 0.1;
-		if(cameraAngleZ <= -18) cameraAngleZ = -18;
+		if(cameraAngleZ <= CAMERA_ANGLE_Z_MIN) cameraAngleZ = CAMERA_ANGLE_Z_MIN;
 
 
         // Lưu vị trí chuột hiện tại
@@ -270,5 +270,5 @@ void checkEventSpecialKeys()
 	if(specialKeys[GLUT_KEY_DOWN])
 		cameraAngleZ -= rotate*10;
 
-    if(cameraAngleZ < -18) cameraAngleZ = -18;
+    if(cameraAngleZ < CAMERA_ANGLE_Z_MIN) cameraAngleZ = CAMERA_ANGLE_Z_MIN;
 }
