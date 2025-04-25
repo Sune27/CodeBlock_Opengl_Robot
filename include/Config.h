@@ -5,7 +5,7 @@ using namespace std;
 #ifndef CONFIG_H
 #define CONFIG_H
 
-const GLdouble eyeX = 30.0, eyeY = -30.0, eyeZ = 30.0;
+const GLdouble eyeX = 50.0, eyeY = -50.0, eyeZ = 20.0;
 const GLdouble centerX = 0.0, centerY = 0.0, centerZ = 0.0;
 const GLdouble upX = 0.0, upY = 0.0, upZ = 1.0;
 
