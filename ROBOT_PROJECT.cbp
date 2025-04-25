@@ -33,15 +33,12 @@
 		</Compiler>
 		<Unit filename="include/Config.h" />
 		<Unit filename="include/Console.h" />
-		<Unit filename="include/Robot.h" />
 		<Unit filename="include/RobotArm.h" />
-		<Unit filename="include/Robot_Attributes.h" />
 		<Unit filename="include/UI.h" />
 		<Unit filename="include/UI_Attributes.h" />
 		<Unit filename="include/Utils.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="source/Console.cpp" />
-		<Unit filename="source/Robot.cpp" />
 		<Unit filename="source/RobotArm.cpp" />
 		<Unit filename="source/UI.cpp" />
 		<Unit filename="source/Utils.cpp" />

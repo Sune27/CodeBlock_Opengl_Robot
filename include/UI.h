@@ -31,6 +31,7 @@ class Label : public UI_Elements
         Label();
         Label(int x, int y, string text, Color color, Color hoverColor);
         ~Label();
+        void setPosition(int, int);
         void setStatusHovered(bool status) override;
         void draw() override;
     private:

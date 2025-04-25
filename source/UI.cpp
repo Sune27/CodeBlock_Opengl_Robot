@@ -42,6 +42,12 @@ void Label::setStatusHovered(bool status)
 {
     isButtonHovered = status;
 }
+void Label::setPosition(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}
+
 //button
 Button::Button(){}
 Button::Button(int x, int y, int width, int height, Color background, Color backgroundHover)
@@ -139,8 +145,20 @@ UI_Manager::UI_Manager()
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI] = make_unique<Button>(X_downArrowButton, Y_downArrowButton, Width_downArrowButton, Height_downArrowButton, Background_downArrowButton, BackgroundHover_downArrowButton);
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI] = make_unique<Button>(X_rightHandButton, Y_rightHandButton, Width_rightHandButton, Height_rightHandButton, Background_rightHandButton, BackgroundHover_rightHandButton);
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI] = make_unique<Button>(X_leftHandButton, Y_leftHandButton, Width_leftHandButton, Height_leftHandButton, Background_leftHandButton, BackgroundHover_leftHandButton);
+    UI_Maps[UIObject::Q_KEYBOARD_BUTTON_UI] = make_unique<Button>(X_QButton, Y_QButton, Width_QButton, Height_QButton, Background_QButton, BackgroundHover_QButton);
+    UI_Maps[UIObject::A_KEYBOARD_BUTTON_UI] = make_unique<Button>(X_AButton, Y_AButton, Width_AButton, Height_AButton, Background_AButton, BackgroundHover_AButton);
+    UI_Maps[UIObject::W_KEYBOARD_BUTTON_UI] = make_unique<Button>(X_WButton, Y_WButton, Width_WButton, Height_WButton, Background_WButton, BackgroundHover_WButton);
+    UI_Maps[UIObject::S_KEYBOARD_BUTTON_UI] = make_unique<Button>(X_SButton, Y_SButton, Width_SButton, Height_SButton, Background_SButton, BackgroundHover_SButton);
+    UI_Maps[UIObject::E_KEYBOARD_BUTTON_UI] = make_unique<Button>(X_EButton, Y_EButton, Width_EButton, Height_EButton, Background_EButton, BackgroundHover_EButton);
+    UI_Maps[UIObject::D_KEYBOARD_BUTTON_UI] = make_unique<Button>(X_DButton, Y_DButton, Width_DButton, Height_DButton, Background_DButton, BackgroundHover_DButton);
 
     UI_Maps[UIObject::EXIT_LABEL_UI] = make_unique<Label>(X_exitLabel, Y_exitLabel, Text_exitLabel, Color_exitLabel, HoverColor_exitLabel);
+    UI_Maps[UIObject::Q_KEYBOARD_LABEL_UI] = make_unique<Label>(X_QLabel, Y_QLabel, Text_QLabel, Color_QLabel, HoverColor_QLabel);
+    UI_Maps[UIObject::A_KEYBOARD_LABEL_UI] = make_unique<Label>(X_ALabel, Y_ALabel, Text_ALabel, Color_ALabel, HoverColor_ALabel);
+    UI_Maps[UIObject::W_KEYBOARD_LABEL_UI] = make_unique<Label>(X_WLabel, Y_WLabel, Text_WLabel, Color_WLabel, HoverColor_WLabel);
+    UI_Maps[UIObject::S_KEYBOARD_LABEL_UI] = make_unique<Label>(X_SLabel, Y_SLabel, Text_SLabel, Color_SLabel, HoverColor_SLabel);
+    UI_Maps[UIObject::E_KEYBOARD_LABEL_UI] = make_unique<Label>(X_ELabel, Y_ELabel, Text_ELabel, Color_ELabel, HoverColor_ELabel);
+    UI_Maps[UIObject::D_KEYBOARD_LABEL_UI] = make_unique<Label>(X_DLabel, Y_DLabel, Text_DLabel, Color_DLabel, HoverColor_DLabel);
 
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_leftArrowSymbol, Y_leftArrowSymbol, Width_leftArrowSymbol, Height_leftArrowSymbol, Type_leftArrowSymbol);
     UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_rightArrowSymbol, Y_rightArrowSymbol, Width_rightArrowSymbol, Height_rightArrowSymbol, Type_rightArrowSymbol);
@@ -169,8 +187,23 @@ void UI_Manager::draw()
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->draw();
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->draw();
+    UI_Maps[UIObject::Q_KEYBOARD_BUTTON_UI]->draw();
+    UI_Maps[UIObject::A_KEYBOARD_BUTTON_UI]->draw();
+    UI_Maps[UIObject::W_KEYBOARD_BUTTON_UI]->draw();
+    UI_Maps[UIObject::S_KEYBOARD_BUTTON_UI]->draw();
+    UI_Maps[UIObject::E_KEYBOARD_BUTTON_UI]->draw();
+    UI_Maps[UIObject::D_KEYBOARD_BUTTON_UI]->draw();
+
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
+    UI_Maps[UIObject::Q_KEYBOARD_LABEL_UI]->draw();
+    UI_Maps[UIObject::A_KEYBOARD_LABEL_UI]->draw();
+    UI_Maps[UIObject::W_KEYBOARD_LABEL_UI]->draw();
+    UI_Maps[UIObject::S_KEYBOARD_LABEL_UI]->draw();
+    UI_Maps[UIObject::E_KEYBOARD_LABEL_UI]->draw();
+    UI_Maps[UIObject::D_KEYBOARD_LABEL_UI]->draw();
+
+
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->draw();
     UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI]->draw();
     UI_Maps[UIObject::UP_ARROW_SYMBOL_UI]->draw();
@@ -197,8 +230,21 @@ void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::Q_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::A_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::W_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::S_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::E_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::D_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::EXIT_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::Q_KEYBOARD_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::Q_KEYBOARD_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::A_KEYBOARD_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::A_KEYBOARD_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::W_KEYBOARD_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::W_KEYBOARD_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::S_KEYBOARD_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::S_KEYBOARD_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::E_KEYBOARD_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::E_KEYBOARD_BUTTON_UI]->getStatusHovered());
+    UI_Maps[UIObject::D_KEYBOARD_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::D_KEYBOARD_BUTTON_UI]->getStatusHovered());
+
 
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered());

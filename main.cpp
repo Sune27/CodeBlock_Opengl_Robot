@@ -178,7 +178,7 @@ void passiveMouseMotion(int x, int y)
 {
 	widget.checkAllButtonOver(x,y);
 	cout << "mouseX: " << x << " mouseY: " << y << endl;
-	widget.UI_Maps[DOWN_ARROW_SYMBOL_UI]->setPosition(x, y);
+	//widget.UI_Maps[DOWN_ARROW_SYMBOL_UI]->setPosition(x, y);
 }
 
 void motion(int x, int y)
