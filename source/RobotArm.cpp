@@ -4,7 +4,7 @@ using namespace std;
 
 RobotArm::RobotArm()
 {
-    showDirection = true;
+    showDirection = false;
     isHandOpen = true;
     showRobot = true;
     isLeftHandClaw = false;
@@ -181,7 +181,8 @@ void RobotArm::draw()
     printAttributes();
     printAttributeToTxt();
     drawDirection();
-    drawFloor(SIZE_FLOOR, DIVISION_FLOOR, GRAY);
+    //drawFloor(SIZE_FLOOR, DIVISION_FLOOR, GRAY);
+    drawChessboardFloor();
     if(showRobot)
     {
         head.drawHead();

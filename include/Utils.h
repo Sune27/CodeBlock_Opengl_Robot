@@ -245,6 +245,7 @@ void drawOpenU(int x, int y, int width, int height, Color color);
 void drawArrow(int x, int y, int width, int height, int direction, Color color);
 void drawText(int x, int y, const string& str, Color color);
 void normalizeAngle(float& angle);
+void drawChessboardFloor();
 void drawFloor(double size, int divisions, Color color);
 void drawButton(float x, float y, float width, float height, Color background);
 void drawWireSphere(Point center, float radius, Color color);

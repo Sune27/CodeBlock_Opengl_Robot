@@ -109,6 +109,39 @@ void normalizeAngle(float& angle)
     }
 }
 
+void drawChessboardFloor()
+{
+    // Kích thước mỗi ô vuông
+    const float FLOOR_SIZE = 100;
+    const float NUM_TILES = 100;
+    float tileSize = FLOOR_SIZE * 2.0f / NUM_TILES;
+
+    // Vẽ các ô vuông
+    for (int i = 0; i < NUM_TILES; ++i) {
+        for (int j = 0; j < NUM_TILES; ++j) {
+            // Xác định màu của ô vuông dựa trên vị trí (i, j)
+            if ((i + j) % 2 == 0) {
+                setColor(GRAY);
+            } else {
+                glColor3f(0.0f, 0.0f, 0.0f); // Màu đen
+            }
+
+            // Tính toán tọa độ của góc dưới bên trái của ô vuông
+            float x = -FLOOR_SIZE + (float)i * tileSize;
+            float y = -FLOOR_SIZE + (float)j * tileSize;
+
+            // Vẽ ô vuông
+            glBegin(GL_QUADS);
+                glVertex3f(x, y, 0.0f);
+                glVertex3f(x + tileSize, y, 0.0f);
+                glVertex3f(x + tileSize, y + tileSize, 0.0f);
+                glVertex3f(x, y + tileSize, 0.0f);
+            glEnd();
+        }
+    }
+}
+
+
 void drawFloor(double size = 10.0, int divisions = 10, Color color = GRAY) {
     glBegin(GL_QUADS);
 

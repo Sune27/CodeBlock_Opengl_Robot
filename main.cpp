@@ -225,7 +225,7 @@ void specialFunc(int key, int x, int y)
 }
 void checkEventSpecialKeys()
 {
-	float rotate = 0.01;
+	float rotate = 0.05;
 
 	if(specialKeys[GLUT_KEY_LEFT])
 		normalizeAngle(cameraAngle += rotate/10);
