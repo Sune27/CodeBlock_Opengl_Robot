@@ -46,6 +46,43 @@ const int Y_DLabel = 400;
 const string Text_DLabel = "D";
 const Color Color_DLabel = BLACK;
 const Color HoverColor_DLabel = WHITE;
+//One label
+const int X_OneLabel = 80;
+const int Y_OneLabel = 0;
+const string Text_OneLabel = "1";
+const Color Color_OneLabel = BLACK;
+const Color HoverColor_OneLabel = WHITE;
+//Two label
+const int X_TwoLabel = 80;
+const int Y_TwoLabel = 80;
+const string Text_TwoLabel = "2";
+const Color Color_TwoLabel = BLACK;
+const Color HoverColor_TwoLabel = WHITE;
+//Three label
+const int X_ThreeLabel = 80;
+const int Y_ThreeLabel = 160;
+const string Text_ThreeLabel = "3";
+const Color Color_ThreeLabel = BLACK;
+const Color HoverColor_ThreeLabel = WHITE;
+//Four label
+const int X_FourLabel = 80;
+const int Y_FourLabel = 240;
+const string Text_FourLabel = "4";
+const Color Color_FourLabel = BLACK;
+const Color HoverColor_FourLabel = WHITE;
+//Five label
+const int X_FiveLabel = 80;
+const int Y_FiveLabel = 320;
+const string Text_FiveLabel = "5";
+const Color Color_FiveLabel = BLACK;
+const Color HoverColor_FiveLabel = WHITE;
+//Six label
+const int X_SixLabel = 80;
+const int Y_SixLabel = 400;
+const string Text_SixLabel = "6";
+const Color Color_SixLabel = BLACK;
+const Color HoverColor_SixLabel = WHITE;
+
 
 
 //exit button
@@ -139,6 +176,48 @@ const int Width_DButton = 70;
 const int Height_DButton = 70;
 const Color Background_DButton = GOLD1;
 const Color BackgroundHover_DButton = DARK_BLUE;
+//1 button
+const int X_OneButton = 80;
+const int Y_OneButton = 0;
+const int Width_OneButton = 70;
+const int Height_OneButton = 70;
+const Color Background_OneButton = GOLD1;
+const Color BackgroundHover_OneButton = DARK_BLUE;
+//2 button
+const int X_TwoButton = 80;
+const int Y_TwoButton = 80;
+const int Width_TwoButton = 70;
+const int Height_TwoButton = 70;
+const Color Background_TwoButton = GOLD1;
+const Color BackgroundHover_TwoButton = DARK_BLUE;
+//3 button
+const int X_ThreeButton = 80;
+const int Y_ThreeButton = 160;
+const int Width_ThreeButton = 70;
+const int Height_ThreeButton = 70;
+const Color Background_ThreeButton = GOLD1;
+const Color BackgroundHover_ThreeButton = DARK_BLUE;
+//4 button
+const int X_FourButton = 80;
+const int Y_FourButton = 240;
+const int Width_FourButton = 70;
+const int Height_FourButton = 70;
+const Color Background_FourButton = GOLD1;
+const Color BackgroundHover_FourButton = DARK_BLUE;
+//5 button
+const int X_FiveButton = 80;
+const int Y_FiveButton = 320;
+const int Width_FiveButton = 70;
+const int Height_FiveButton = 70;
+const Color Background_FiveButton = GOLD1;
+const Color BackgroundHover_FiveButton = DARK_BLUE;
+//6 button
+const int X_SixButton = 80;
+const int Y_SixButton = 400;
+const int Width_SixButton = 70;
+const int Height_SixButton = 70;
+const Color Background_SixButton = GOLD1;
+const Color BackgroundHover_SixButton = DARK_BLUE;
 
 
 
