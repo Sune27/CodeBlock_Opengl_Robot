@@ -5,7 +5,7 @@ using namespace std;
 UI_Elements::UI_Elements(){disable = false;}
 UI_Elements::~UI_Elements(){}
 void UI_Elements::draw(){}
-void UI_Elements::buttonOver(int mouseX, int mouseY){};
+void UI_Elements::buttonOver(int mouseX, int mouseY){}
 bool UI_Elements::getStatusHovered(){}
 void UI_Elements::setStatusHovered(bool status){}
 bool UI_Elements::getDisable()
@@ -16,7 +16,7 @@ void UI_Elements::setDisable(bool status)
 {
     disable = status;
 }
-
+void UI_Elements::setPosition(int x, int y){}
 //label
 Label::Label(){}
 Label::Label(int x, int y, string text, Color color, Color hoverColor)
@@ -69,7 +69,11 @@ void Button::draw()
         drawX(x, y, width, height, background);
     }
 }
-
+void Button::setPosition(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}
 bool Button::getStatusHovered()
 {
     return isHovered;
@@ -104,7 +108,11 @@ void Symbol::setStatusHovered(bool status)
 {
     isButtonHovered = status;
 }
-
+void Symbol::setPosition(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}
 void Symbol::draw()
 {
     Color currentColor = (isButtonHovered)?hoverColor:color;
@@ -118,7 +126,7 @@ void Symbol::draw()
         drawArrow(x, y, width, height, 4, currentColor);
     else if(type == "RIGHT_HAND" || type == "LEFT_HAND")
         drawOpenU(x, y, width, height, currentColor);
-    
+
 }
 
 //UI manager
@@ -131,9 +139,9 @@ UI_Manager::UI_Manager()
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI] = make_unique<Button>(X_downArrowButton, Y_downArrowButton, Width_downArrowButton, Height_downArrowButton, Background_downArrowButton, BackgroundHover_downArrowButton);
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI] = make_unique<Button>(X_rightHandButton, Y_rightHandButton, Width_rightHandButton, Height_rightHandButton, Background_rightHandButton, BackgroundHover_rightHandButton);
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI] = make_unique<Button>(X_leftHandButton, Y_leftHandButton, Width_leftHandButton, Height_leftHandButton, Background_leftHandButton, BackgroundHover_leftHandButton);
-    
+
     UI_Maps[UIObject::EXIT_LABEL_UI] = make_unique<Label>(X_exitLabel, Y_exitLabel, Text_exitLabel, Color_exitLabel, HoverColor_exitLabel);
-    
+
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_leftArrowSymbol, Y_leftArrowSymbol, Width_leftArrowSymbol, Height_leftArrowSymbol, Type_leftArrowSymbol);
     UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_rightArrowSymbol, Y_rightArrowSymbol, Width_rightArrowSymbol, Height_rightArrowSymbol, Type_rightArrowSymbol);
     UI_Maps[UIObject::UP_ARROW_SYMBOL_UI] = make_unique<Symbol>(X_upArrowSymbol, Y_upArrowSymbol, Width_upArrowSymbol, Height_upArrowSymbol, Type_upArrowSymbol);
@@ -154,8 +162,6 @@ void UI_Manager::draw()
 	glPushMatrix();
 	glLoadIdentity();
 	// Vẽ các thành phần UI 2D
-    setColor(GRAY);
-    glRectf(0, 0, WINDOW_WIDTH, 100);
     UI_Maps[UIObject::EXIT_BUTTON_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->draw();
@@ -193,7 +199,7 @@ void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->setStatusHovered(UI_Maps[UIObject::EXIT_BUTTON_UI]->getStatusHovered());
-    
+
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::RIGHT_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered());
     UI_Maps[UIObject::UP_ARROW_SYMBOL_UI]->setStatusHovered(UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->getStatusHovered());

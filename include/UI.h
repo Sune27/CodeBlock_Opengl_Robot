@@ -13,12 +13,13 @@ class UI_Elements
     public:
         UI_Elements();
         ~UI_Elements();
-        virtual void draw();
+        virtual void draw() = 0;
         virtual void buttonOver(int mouseX, int mouseY);
         virtual bool getStatusHovered();
         virtual void setStatusHovered(bool status);
         virtual bool getDisable();
         virtual void setDisable(bool status);
+        virtual void setPosition(int x, int y);
     private:
         bool disable;
 };
@@ -50,6 +51,7 @@ class Button : public UI_Elements
         bool getStatusHovered() override;
         bool getDisable() override;
         void setDisable(bool status) override;
+        void setPosition(int x, int y) override;
     private:
         int x, y, width, height;
         Color background, background_hover;
@@ -65,6 +67,7 @@ class Symbol : public UI_Elements
         ~Symbol();
         void setStatusHovered(bool status) override;
         void draw() override;
+        void setPosition(int, int) override;
     private:
         int x, y, width, height;
         Color color, hoverColor;

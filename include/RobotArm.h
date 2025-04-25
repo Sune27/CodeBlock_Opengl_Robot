@@ -12,13 +12,13 @@
 class RobotHead
 {
     public:
-    RobotHead();
-    ~RobotHead();
-    void drawHead();
-    void setDirection(Vector other);
+        RobotHead();
+        ~RobotHead();
+        void drawHead();
+        void setDirection(Vector other);
     private:
-    float headRadius;
-    float headZPosition;
+        float headRadius;
+        float headZPosition;
 
     Color head_Color;
 

@@ -32,10 +32,11 @@ const float ANGLEZLONGARM_MIN = 0;
 const double DISTANCE_LIMIT = 3.0;
 const double SIZE_FLOOR = 20.0;
 const int DIVISION_FLOOR = 20.0;
-const float ROTATE = 0.05;
+const float ROTATE = 0.1;
 
 const double PI = 3.14193;
 const int NUM_SEGMENTS = 30;
+
 
 enum UIObject
 {
@@ -54,16 +55,6 @@ enum UIObject
     RIGHT_HAND_SYMBOL_UI,
     LEFT_HAND_SYMBOL_UI,
     TOTAL_OBJECT
-};
-
-enum TypeButtonOver
-{
-    EXIT_BUTTON,
-    USER_MANUAL_BUTTON,
-    LEFT_ARROW_BUTTON,
-    RIGHT_ARROW_BUTTON,
-
-    TOTAL_BUTTON
 };
 
 enum TypeStatus

@@ -7,7 +7,7 @@
 
 1744990802 ated upstream
 
-1745564798 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
+1745592238 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
 	<bits/stdc++.h>
 	<GL/glut.h>
 	"include/Config.h"
@@ -73,7 +73,7 @@
 1744944172 source:d:\code\cpp\opengl_codeblocks\robot_project\source\console.cpp
 	"Console.h"
 
-1745565427 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
+1745591364 d:\code\cpp\opengl_codeblocks\robot_project\include\config.h
 	<GL/glut.h>
 
 1745563208 d:\code\cpp\opengl_codeblocks\robot_project\include\utils.h
@@ -87,7 +87,7 @@
 1744943898 d:\code\cpp\opengl_codeblocks\robot_project\include\console.h
 	<windows.h>
 
-1745054558 d:\code\cpp\opengl_codeblocks\robot_project\include\robotarm.h
+1745571596 d:\code\cpp\opengl_codeblocks\robot_project\include\robotarm.h
 	<GL/glut.h>
 	<iostream>
 	<fstream>
@@ -100,7 +100,7 @@
 	"Config.h"
 	"Utils.h"
 
-1745564846 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
+1745583139 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
 	"../include/RobotArm.h"
 
 1744980945 source:d:\code\cpp\opengl_codeblocks\robot_project\source\userinterface.cpp
@@ -110,17 +110,17 @@
 	"../include/Utils.h"
 	"../include/Config.h"
 
-1745565085 source:d:\code\cpp\opengl_codeblocks\robot_project\source\ui.cpp
+1745592013 source:d:\code\cpp\opengl_codeblocks\robot_project\source\ui.cpp
 	"../include/UI.h"
 
-1745056632 d:\code\cpp\opengl_codeblocks\robot_project\include\ui.h
+1745591985 d:\code\cpp\opengl_codeblocks\robot_project\include\ui.h
 	<GL/glut.h>
 	<memory>
 	<unordered_map>
 	<string>
 	"UI_Attributes.h"
 
-1745298670 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
+1745592355 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
 	"Config.h"
 	"Utils.h"
 
@@ -186,4 +186,20 @@
 1745070684 source:d:\github\codeblock_opengl_robot\source\utils.cpp
 	"../include/Utils.h"
 	"../include/Config.h"
+
+1745588299 d:\code\cpp\opengl_codeblocks\robot_project\include\robot.h
+	<GL/glut.h>
+	<memory>
+	<unordered_map>
+	<vector>
+	<string>
+	"Robot_Attributes.h"
+
+1745583404 d:\code\cpp\opengl_codeblocks\robot_project\include\robot_attributes.h
+	<GL/glut.h>
+	"Config.h"
+	"Utils.h"
+
+1745587648 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robot.cpp
+	"../include/Robot.h"
 

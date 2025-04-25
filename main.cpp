@@ -4,13 +4,11 @@
 #include "include/Utils.h"
 #include "include/Console.h"
 #include "include/RobotArm.h"
-//#include "include/UserInterface.h"
 #include "include/UI.h"
 using namespace std;
 
 RobotArm robotArm;
 UI_Manager widget;
-//UIManager uiManager;
 vector<bool> keys(256, false);
 vector<bool> specialKeys(256, false);
 float cameraAngle = 0;
@@ -108,6 +106,10 @@ void keyboardFunc(unsigned char key, int x, int y)
 		if(robotArm.getStatus(RIGHT_HAND_CLAWING) == false)
 		robotArm.changeStatus(LEFT_HAND_CLAWING);
 	}
+	else if(key == '-')
+    {
+        robotArm.changeStatus(SHOW_OBJECT_STATUS);
+    }
 	else keys[key] = true;
 }
 void keyboardUpFunc(unsigned char key, int x, int y)
@@ -126,19 +128,19 @@ void mouseFunc(int button, int state, int x, int y)
 			}
 			else if(widget.UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				specialKeys[GLUT_KEY_LEFT] = true;
+				//specialKeys[GLUT_KEY_LEFT] = true;
 			}
 			else if(widget.UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				specialKeys[GLUT_KEY_RIGHT] = true;
+				//specialKeys[GLUT_KEY_RIGHT] = true;
 			}
 			else if(widget.UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				specialKeys[GLUT_KEY_UP] = true;
+				//specialKeys[GLUT_KEY_UP] = true;
 			}
 			else if(widget.UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				specialKeys[GLUT_KEY_DOWN] = true;
+				//specialKeys[GLUT_KEY_DOWN] = true;
 			}
 			else if(
 				widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getStatusHovered()
@@ -162,10 +164,10 @@ void mouseFunc(int button, int state, int x, int y)
 		else if (state == GLUT_UP)
 		{
 			isDragging = false;
-			specialKeys[GLUT_KEY_LEFT] = false;
-			specialKeys[GLUT_KEY_RIGHT] = false;
-			specialKeys[GLUT_KEY_UP] = false;
-			specialKeys[GLUT_KEY_DOWN] = false;
+			// specialKeys[GLUT_KEY_LEFT] = false;
+			// specialKeys[GLUT_KEY_RIGHT] = false;
+			// specialKeys[GLUT_KEY_UP] = false;
+			// specialKeys[GLUT_KEY_DOWN] = false;
 
         }
         glutPostRedisplay(); // Vẽ lại
@@ -175,6 +177,8 @@ void mouseFunc(int button, int state, int x, int y)
 void passiveMouseMotion(int x, int y)
 {
 	widget.checkAllButtonOver(x,y);
+	cout << "mouseX: " << x << " mouseY: " << y << endl;
+	widget.UI_Maps[DOWN_ARROW_SYMBOL_UI]->setPosition(x, y);
 }
 
 void motion(int x, int y)
@@ -219,8 +223,6 @@ void checkEventKeyboard()
 		robotArm.rotateAngle(ANGLEX_LEFT_LONG_ARM, ROTATE);
 	if(keys['s'])
 		robotArm.rotateAngle(ANGLEX_LEFT_LONG_ARM, -ROTATE);
-	if(keys['-'])
-		robotArm.changeStatus(SHOW_OBJECT_STATUS);
 	if(keys['q'])
 		robotArm.rotateAngle(ANGLE_LEFT_SHORT_ARM, ROTATE);
 	if(keys['a'])
@@ -261,14 +263,9 @@ void checkEventSpecialKeys()
 {
 	float rotate = 0.05;
 
-	if(specialKeys[GLUT_KEY_LEFT])
-		normalizeAngle(cameraAngle += rotate/10);
-	else if(specialKeys[GLUT_KEY_RIGHT])
-		normalizeAngle(cameraAngle -= rotate/10);
-	if(specialKeys[GLUT_KEY_UP])
-		cameraAngleZ += rotate*10;
-	if(specialKeys[GLUT_KEY_DOWN])
-		cameraAngleZ -= rotate*10;
+	// if(specialKeys[GLUT_KEY_RIGHT])
+	// if(specialKeys[GLUT_KEY_LEFT])
+	// if(specialKeys[GLUT_KEY_UP])
+	// if(specialKeys[GLUT_KEY_DOWN])
 
-    if(cameraAngleZ < CAMERA_ANGLE_Z_MIN) cameraAngleZ = CAMERA_ANGLE_Z_MIN;
 }
