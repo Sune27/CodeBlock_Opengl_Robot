@@ -154,6 +154,8 @@ void UI_Manager::draw()
 	glPushMatrix();
 	glLoadIdentity();
 	// Vẽ các thành phần UI 2D
+    setColor(GRAY);
+    glRectf(0, 0, WINDOW_WIDTH, 100);
     UI_Maps[UIObject::EXIT_BUTTON_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->draw();
@@ -161,10 +163,6 @@ void UI_Manager::draw()
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->draw();
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->draw();
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->draw();
-
-    cout << boolalpha;
-    cout << UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getDisable() << endl;
-    cout << UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->getDisable() << endl;
 
     UI_Maps[UIObject::EXIT_LABEL_UI]->draw();
     UI_Maps[UIObject::LEFT_ARROW_SYMBOL_UI]->draw();

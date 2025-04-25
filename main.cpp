@@ -16,6 +16,11 @@ vector<bool> specialKeys(256, false);
 float cameraAngle = 0;
 float cameraAngleZ = 0;
 
+//test
+int lastMouseX = 0;
+int lastMouseY = 0;
+bool isDragging = false;
+
 void display();
 void reshape(int, int);
 void keyboardFunc(unsigned char, int, int);
@@ -24,6 +29,7 @@ void specialFunc(int, int, int);
 void specialUpFunc(int, int, int);
 void mouseFunc(int, int, int, int);
 void passiveMouseMotion(int, int);
+void motion(int, int);
 
 void checkEventKeyboard();
 void checkEventSpecialKeys();
@@ -47,7 +53,7 @@ int main(int argc, char** argv)
 	glutSpecialUpFunc(specialUpFunc);
 	glutMouseFunc(mouseFunc);
 	glutPassiveMotionFunc(passiveMouseMotion);
-	//glutMotionFunc();
+	glutMotionFunc(motion);
 	//glutIdleFunc();
 	glutReshapeFunc(reshape);
 
@@ -71,9 +77,9 @@ void display()
 		centerX, centerY, centerZ,
 		upX, upY, upZ
 	);
-	cout << "eyeX: " << eyeX*cos(cameraAngle) << endl;
-	cout << "eyeY: " << eyeY*sin(cameraAngle) << endl;
-	cout << "eyeZ: " << eyeZ+cameraAngleZ << endl;
+
+	cout << "cameraAngle: " << cameraAngle << endl;
+	cout << "cameraAngleZ: " << cameraAngleZ << endl;
 
 	robotArm.draw();
 	widget.draw();
@@ -146,10 +152,16 @@ void mouseFunc(int button, int state, int x, int y)
 			&& robotArm.getStatus(LEFT_HAND_CLAWING) == false
 			)
 			robotArm.changeStatus(RIGHT_HAND_CLAWING);
+			else{
+                isDragging = true;
+                lastMouseX = x;
+                lastMouseY = y;
+			}
 
         }
 		else if (state == GLUT_UP)
 		{
+			isDragging = false;
 			specialKeys[GLUT_KEY_LEFT] = false;
 			specialKeys[GLUT_KEY_RIGHT] = false;
 			specialKeys[GLUT_KEY_UP] = false;
@@ -163,6 +175,28 @@ void mouseFunc(int button, int state, int x, int y)
 void passiveMouseMotion(int x, int y)
 {
 	widget.checkAllButtonOver(x,y);
+}
+
+void motion(int x, int y)
+{
+    if (isDragging) {
+        // Tính độ dịch chuyển chuột
+        int deltaX = x - lastMouseX;
+        int deltaY = y - lastMouseY;
+
+        // Cập nhật góc camera
+        cameraAngle += deltaX * 0.01;  // Điều chỉnh tốc độ xoay
+        cameraAngleZ += deltaY * 0.1;
+		if(cameraAngleZ <= -18) cameraAngleZ = -18;
+
+
+        // Lưu vị trí chuột hiện tại
+        lastMouseX = x;
+        lastMouseY = y;
+
+        // Yêu cầu vẽ lại
+        glutPostRedisplay();
+    }
 }
 
 void checkEventKeyboard()
@@ -235,4 +269,6 @@ void checkEventSpecialKeys()
 		cameraAngleZ += rotate*10;
 	if(specialKeys[GLUT_KEY_DOWN])
 		cameraAngleZ -= rotate*10;
+
+    if(cameraAngleZ < -18) cameraAngleZ = -18;
 }
