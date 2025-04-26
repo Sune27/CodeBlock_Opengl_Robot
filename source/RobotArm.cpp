@@ -86,22 +86,13 @@ RobotHead::RobotHead()
     head_Color = ORANGE;
     centerHeadPoint.move(normal, headZPosition);
 }
-
-void RobotArm::printAttributeToTxt()
+void RobotHead::move(float distance)
 {
-
+    centerHeadPoint.move(direction, distance);
 }
-
 void RobotArm::printAttributes()
 {
     cout << __TIME__ << endl;
-    cout << "angleX: " << angleX << endl;
-    cout << "angleZ: " << angleZ << endl;
-    cout << boolalpha;
-    cout << "isLeftHandClaw: " << isLeftHandClaw << endl;
-    cout << "isRightHandClaw: " << isRightHandClaw << endl;
-    cout << "distanceContainerToLeft: " << distanceContainerToLeft << endl;
-    cout << "distanceContainerToRight: " << distanceContainerToRight << endl;
 }
 
 void RobotArm::update()
@@ -179,9 +170,7 @@ void RobotArm::draw()
 {
     update();
     printAttributes();
-    printAttributeToTxt();
     drawDirection();
-    //drawFloor(SIZE_FLOOR, DIVISION_FLOOR, GRAY);
     drawChessboardFloor();
     if(showRobot)
     {
@@ -194,7 +183,6 @@ void RobotArm::draw()
         drawContainer();
     }
 }
-
 void RobotArm::drawDirection()
 {
     if(showDirection == true)
@@ -204,17 +192,12 @@ void RobotArm::drawDirection()
         drawLine(robotDirectionXY_Vertical, centerBodyPoint, DIRECTION_LENGTH, PURPLE);
         drawLine(robotDirectionXY_Horizontal, centerBodyPoint, DIRECTION_LENGTH, BLUE);
         drawLine(robotDirectionXYZ, centerBodyPoint, DIRECTION_LENGTH, GREEN);
-        // drawLine(leftShortArmDirection, leftArmJointPoint, DIRECTION_LENGTH, GREEN);
-        // drawLine(rightShortArmDirection, rightArmJointPoint, DIRECTION_LENGTH, ORANGE);
         drawLine(leftLongArmDirection, leftHingePoint, DIRECTION_LENGTH, RED);
         drawLine(rightLongArmDirection, rightHingePoint, DIRECTION_LENGTH, PINK);
         drawLine(leftHandDirection, leftWristPoint, DIRECTION_LENGTH, YELLOW);
         drawLine(rightHandDirection, rightWristPoint, DIRECTION_LENGTH, ORANGE);
-        // drawLine(othorgonalLeftHandDirection, leftWristPoint, DIRECTION_LENGTH, RED);
-        // drawLine(othorgonalRightHandDirection, rightWristPoint, DIRECTION_LENGTH, PINK);
     }
 }
-
 void RobotArm::drawContainer()
 {
     if(isLeftHandClaw == false && isRightHandClaw == false)
@@ -233,7 +216,6 @@ void RobotArm::drawContainer()
         drawBoxOutline(containerLength, containerLength, containerLength, containerDirection, centerRightHandPoint, container_OutlineColor);
     }
 }
-
 void RobotArm::drawRobotHand()
 {
     drawSolidSphere(leftWristPoint, wristRadius, wrist_Color);
@@ -269,7 +251,6 @@ void RobotArm::drawRobotHand()
 
     }
 }
-
 void RobotArm::drawRobotLongArm()
 {
     drawSolidSphere(leftHingePoint, hingeRadius, hinge_Color);
@@ -312,6 +293,12 @@ bool RobotArm::checkHandClaw()
 void RobotHead::setDirection(Vector other)
 {
     direction = other;
+}
+void RobotArm::move(float distance)
+{
+    centerBodyPoint.move(robotDirectionXY_Vertical, distance);
+    head.move(distance);
+    
 }
 RobotHead::~RobotHead(){}
 void RobotArm::changeStatus(TypeStatus status)
@@ -408,7 +395,10 @@ Vector RobotArm::getVector(TypeVector v)
             return leftShortArmDirection;
     }
 }
-
+Point RobotArm::getCenterPoint()
+{
+    return centerBodyPoint;
+}
 void RobotArm::rotateAngle(TypeAngle angle, float rotate)
 {
     switch (angle)

@@ -18,6 +18,7 @@ float cameraAngleZ = 0;
 int lastMouseX = 0;
 int lastMouseY = 0;
 bool isDragging = false;
+bool changed = false;
 
 void display();
 void reshape(int, int);
@@ -63,7 +64,6 @@ int main(int argc, char** argv)
 void display()
 {
 	setCursorPosition(0, 0);
-	cout << __TIME__ << endl;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_MODELVIEW);
@@ -72,12 +72,9 @@ void display()
 	gluLookAt
 	(
 		eyeX*cos(cameraAngle), eyeY*sin(cameraAngle), eyeZ+cameraAngleZ,
-		centerX, centerY, centerZ,
+		robotArm.getCenterPoint().arr[0], robotArm.getCenterPoint().arr[1], robotArm.getCenterPoint().arr[2],
 		upX, upY, upZ
 	);
-
-	cout << "cameraAngle: " << cameraAngle << endl;
-	cout << "cameraAngleZ: " << cameraAngleZ << endl;
 
 	robotArm.draw();
 	widget.draw();
@@ -177,7 +174,7 @@ void mouseFunc(int button, int state, int x, int y)
 void passiveMouseMotion(int x, int y)
 {
 	widget.checkAllButtonOver(x,y);
-	cout << "mouseX: " << x << " mouseY: " << y << endl;
+	//cout << "mouseX: " << x << " mouseY: " << y << endl;
 	//widget.UI_Maps[DOWN_ARROW_SYMBOL_UI]->setPosition(x, y);
 }
 
@@ -231,11 +228,11 @@ void checkEventKeyboard()
 		robotArm.rotateAngle(ANGLE_RIGHT_SHORT_ARM, ROTATE);
 	if(keys['1'])
 		robotArm.rotateAngle(ANGLE_RIGHT_SHORT_ARM, -ROTATE);
-	if(keys['z'])
-		robotArm.rotateAngle(ANGLE_X, ROTATE);
-	if(keys['x'])
-		robotArm.rotateAngle(ANGLE_X, -ROTATE);
 
+	for(int i = (int)'a'; i < (int)'z'; ++i)
+	{
+		cout << (char)i << ": " << keys[i] << endl;
+	}
 	widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_LEFT_HAND_CLAW));
 	widget.UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_RIGHT_HAND_CLAW));
 	robotArm.checkMinValueAngle();
@@ -263,9 +260,17 @@ void checkEventSpecialKeys()
 {
 	float rotate = 0.05;
 
-	// if(specialKeys[GLUT_KEY_RIGHT])
-	// if(specialKeys[GLUT_KEY_LEFT])
-	// if(specialKeys[GLUT_KEY_UP])
-	// if(specialKeys[GLUT_KEY_DOWN])
-
+	//cout << boolalpha;
+	// cout << "Up key: " << specialKeys[GLUT_KEY_UP] << endl;
+	// cout << "Down key: " << specialKeys[GLUT_KEY_DOWN] << endl;
+	// cout << "Right key: " << specialKeys[GLUT_KEY_RIGHT] << endl;
+	// cout << "Left key: " << specialKeys[GLUT_KEY_LEFT] << endl;
+	if(specialKeys[GLUT_KEY_RIGHT])
+		robotArm.rotateAngle(ANGLE_X, -ROTATE);
+	if(specialKeys[GLUT_KEY_LEFT])
+		robotArm.rotateAngle(ANGLE_X, ROTATE);
+	if(specialKeys[GLUT_KEY_UP])
+		robotArm.move(0.2);
+	if(specialKeys[GLUT_KEY_DOWN])
+		robotArm.move(-0.2);
 }

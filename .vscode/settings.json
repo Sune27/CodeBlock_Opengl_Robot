@@ -4,6 +4,9 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp",
-        "rope": "cpp"
+        "rope": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "*.def": "cpp"
     }
 }

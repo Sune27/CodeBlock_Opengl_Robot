@@ -15,17 +15,16 @@ class RobotHead
         RobotHead();
         ~RobotHead();
         void drawHead();
+        void move(float);
         void setDirection(Vector other);
     private:
         float headRadius;
         float headZPosition;
 
-    Color head_Color;
-
-    Point centerHeadPoint;
-
-    Vector normal;
-    Vector direction;
+        Color head_Color;
+        Point centerHeadPoint;
+        Vector normal;
+        Vector direction;
 };
 
 class RobotArm
@@ -48,11 +47,13 @@ public:
     void printAttributeToTxt();
     void update();
     void test();
-
+    
     void rotateAngle(TypeAngle angle, float rotate);
     void changeStatus(TypeStatus status);
+    void move(float);
 
     bool getStatus(TypeStatus status);
+    Point getCenterPoint();
     Vector getVector(TypeVector v);
     float getAngle(TypeAngle a);
 
