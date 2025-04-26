@@ -2,6 +2,64 @@
 #include "../include/Config.h"
 using namespace std;
 
+void drawLine(Point p1, Point p2) 
+{
+    glBegin(GL_LINES);
+    glVertex3d(p1.arr[0], p1.arr[1], p1.arr[2]);
+    glVertex3d(p2.arr[0], p2.arr[1], p2.arr[2]);
+    glEnd();
+}
+
+void drawCylinderSpokes(float radius, float height, Point center, Vector normal, int numSpokes, Color color)
+{
+    setColor(color);
+
+    // Chuẩn hóa vector pháp tuyến
+    Vector normalizedNormal = normalize(normal);
+
+    // Tính toán vector tiếp tuyến và bitangent (giống như trong drawCylinderWithCaps)
+    GLdouble tangentX, tangentY, tangentZ;
+    if (normalizedNormal.arr[2] != 1.0f && normalizedNormal.arr[2] != -1.0f) {
+        tangentX = normalizedNormal.arr[1];
+        tangentY = -normalizedNormal.arr[0];
+        tangentZ = 0.0f;
+    } else {
+        tangentX = 1.0f;
+        tangentY = 0.0f;
+        tangentZ = 0.0f;
+    }
+
+    double length = sqrt(tangentX * tangentX + tangentY * tangentY + tangentZ * tangentZ);
+    tangentX /= length;
+    tangentY /= length;
+    tangentZ /= length;
+
+    GLdouble bitangentX = normalizedNormal.arr[1] * tangentZ - normalizedNormal.arr[2] * tangentY;
+    GLdouble bitangentY = normalizedNormal.arr[2] * tangentX - normalizedNormal.arr[0] * tangentZ;
+    GLdouble bitangentZ = normalizedNormal.arr[0] * tangentY - normalizedNormal.arr[1] * tangentX;
+
+    // Vẽ các nan hoa trên cả hai mặt đáy của hình trụ
+    for (int j = -1; j <= 1; j+=2) { //j = -1 để vẽ đáy dưới và j = 1 để vẽ đáy trên
+        //Vẽ nan hoa từ mặt đáy của hình trụ ra
+        for (int i = 0; i < numSpokes; ++i) {
+            float angle = 2.0f * M_PI * i / numSpokes; // Góc giữa các nan hoa
+
+            // Tính toán vị trí điểm cuối của nan hoa
+            double x = radius * cos(angle);
+            double y = radius * sin(angle);
+
+            GLdouble pointX = center.arr[0] + x * tangentX + y * bitangentX + j * normalizedNormal.arr[0] * height / 2.0f;
+            GLdouble pointY = center.arr[1] + x * tangentY + y * bitangentY + j * normalizedNormal.arr[1] * height / 2.0f;
+            GLdouble pointZ = center.arr[2] + x * tangentZ + y * bitangentZ + j * normalizedNormal.arr[2] * height / 2.0f;
+
+            Point spokeEnd = {pointX, pointY, pointZ};
+
+            // Vẽ đường thẳng từ tâm đến điểm cuối của nan hoa
+            drawLine(center, spokeEnd);
+        }
+    }
+}
+
 void drawX(int x, int y, int width, int height, Color color)
 {
     // Thiết lập màu đỏ

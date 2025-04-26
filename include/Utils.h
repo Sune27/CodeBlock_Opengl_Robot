@@ -239,6 +239,8 @@ struct Point
     }
 };
 
+void drawLine(Point p1, Point p2);
+void drawCylinderSpokes(float radius, float height, Point center, Vector normal, int numSpokes, Color color);
 void drawX(int x, int y, int width, int height, Color color);
 void drawArcSegment(float centerX, float centerY, float radius, float startAngle, float endAngle, int segments);
 void drawOpenU(int x, int y, int width, int height, Color color);

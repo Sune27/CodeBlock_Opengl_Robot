@@ -229,10 +229,10 @@ void checkEventKeyboard()
 	if(keys['1'])
 		robotArm.rotateAngle(ANGLE_RIGHT_SHORT_ARM, -ROTATE);
 
-	for(int i = (int)'a'; i < (int)'z'; ++i)
-	{
-		cout << (char)i << ": " << keys[i] << endl;
-	}
+	// for(int i = (int)'a'; i < (int)'z'; ++i)
+	// {
+	// 	cout << (char)i << ": " << keys[i] << endl;
+	// }
 	widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_LEFT_HAND_CLAW));
 	widget.UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_RIGHT_HAND_CLAW));
 	robotArm.checkMinValueAngle();
@@ -260,17 +260,18 @@ void checkEventSpecialKeys()
 {
 	float rotate = 0.05;
 
-	//cout << boolalpha;
-	// cout << "Up key: " << specialKeys[GLUT_KEY_UP] << endl;
-	// cout << "Down key: " << specialKeys[GLUT_KEY_DOWN] << endl;
-	// cout << "Right key: " << specialKeys[GLUT_KEY_RIGHT] << endl;
-	// cout << "Left key: " << specialKeys[GLUT_KEY_LEFT] << endl;
 	if(specialKeys[GLUT_KEY_RIGHT])
 		robotArm.rotateAngle(ANGLE_X, -ROTATE);
 	if(specialKeys[GLUT_KEY_LEFT])
 		robotArm.rotateAngle(ANGLE_X, ROTATE);
 	if(specialKeys[GLUT_KEY_UP])
-		robotArm.move(0.2);
-	if(specialKeys[GLUT_KEY_DOWN])
+	{
+		robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
 		robotArm.move(-0.2);
+	}
+	if(specialKeys[GLUT_KEY_DOWN])
+	{		
+		robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
+		robotArm.move(0.2);
+	}
 }

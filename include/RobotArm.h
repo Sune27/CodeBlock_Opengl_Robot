@@ -33,6 +33,7 @@ public:
     RobotArm();
     ~RobotArm();
     void draw();
+    void drawWheel();
     void drawRobotBody();
     void drawRobotJoint();
     void drawRobotShortArm();
@@ -44,9 +45,7 @@ public:
     bool checkHandClaw();
     void checkMinValueAngle();
     void checkMaxValueAngle();
-    void printAttributeToTxt();
     void update();
-    void test();
     
     void rotateAngle(TypeAngle angle, float rotate);
     void changeStatus(TypeStatus status);
@@ -67,7 +66,13 @@ private:
     bool isRightHandClaw;
     bool canLeftHandClaw;
     bool canRightHandClaw;
-    //base
+    //wheel
+    float wheelRadius;
+    int wheelNumSpoke;
+    float wheelThickness;
+    float wheelDistance;
+    float wheelAngle;
+    //body
     float angleX;
     float angleZ;
     float bodyRadius;
@@ -111,6 +116,8 @@ private:
     double distanceContainerToLeft;
     double distanceContainerToRight;
 
+    Color wheel_Color;
+    Color wheelSpoke_Color;
     Color body_Color;
     Color body_OutlineColor;
     Color joint_Color;
@@ -142,6 +149,8 @@ private:
     Vector othorgonalRightHandDirection;
     Vector containerDirection;
 
+    Point centerLeftWheelPoint;
+    Point centerRightWheelPoint;
     Point centerBodyPoint;
     Point leftArmJointPoint;
     Point rightArmJointPoint;

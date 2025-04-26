@@ -9,10 +9,15 @@ RobotArm::RobotArm()
     showRobot = true;
     isLeftHandClaw = false;
     isRightHandClaw = false;
-    //base
+    //wheel
+    wheelRadius = 3;
+    wheelNumSpoke = 10;
+    wheelThickness = 1;
+    wheelDistance = 4;
+    //body
     bodyRadius = 4;
     bodyHeight = 7;
-    bodyZPosition = 3.5;
+    bodyZPosition = 6.5;
     //joint
     jointZPosition = 2.5;
     jointRadius = 1;
@@ -52,6 +57,8 @@ RobotArm::RobotArm()
     //container
     containerLength = 2;
 
+    wheel_Color = ALUMINUM;
+    wheelSpoke_Color = BLACK;
     body_Color = GOLD3;
     body_OutlineColor = DARK_GRAY;
     joint_Color = SILVER;
@@ -81,7 +88,7 @@ RobotArm::RobotArm()
 RobotHead::RobotHead()
 {
     headRadius = 3;
-    headZPosition = 10;
+    headZPosition = 13;
     normal.setValue(0,0,1);
     head_Color = ORANGE;
     centerHeadPoint.move(normal, headZPosition);
@@ -93,6 +100,8 @@ void RobotHead::move(float distance)
 void RobotArm::printAttributes()
 {
     cout << __TIME__ << endl;
+    cout << centerLeftWheelPoint << endl;
+    cout << centerBodyPoint << endl;
 }
 
 void RobotArm::update()
@@ -112,6 +121,14 @@ void RobotArm::update()
     leftHandDirection.rotateAroundZAxis(leftLongArmDirection, 90);
     rightHandDirection.rotateAroundZAxis(rightLongArmDirection, 90);
     head.setDirection(robotDirectionXY_Vertical);
+    //wheel
+    centerLeftWheelPoint = centerBodyPoint;
+    centerRightWheelPoint = centerBodyPoint;
+    centerLeftWheelPoint.move(normalBase, -bodyRadius);
+    centerRightWheelPoint.move(normalBase, -bodyRadius);
+    centerLeftWheelPoint.move(robotDirectionXY_Horizontal, -wheelDistance/2.0);
+    centerRightWheelPoint.move(robotDirectionXY_Horizontal, wheelDistance/2.0);
+
     //joint
     leftArmJointPoint = centerBodyPoint;
     rightArmJointPoint = centerBodyPoint;
@@ -172,6 +189,7 @@ void RobotArm::draw()
     printAttributes();
     drawDirection();
     drawChessboardFloor();
+    drawWheel();
     if(showRobot)
     {
         head.drawHead();
@@ -281,6 +299,13 @@ void RobotArm::drawRobotBody()
 {
     drawCylinderWithCaps(bodyRadius, bodyHeight, bodyRadius, centerBodyPoint, normalBase, body_Color);
     drawCylinderOutline(bodyRadius, bodyHeight, centerBodyPoint, normalBase, body_OutlineColor);
+}
+void RobotArm::drawWheel()
+{
+    drawCylinderWithCaps(wheelRadius, wheelThickness, wheelRadius*0.4, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheel_Color);
+    drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
+    drawCylinderWithCaps(wheelRadius, wheelThickness, wheelRadius*0.4, centerRightWheelPoint, robotDirectionXY_Horizontal, wheel_Color);
+    drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerRightWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
 }
 void RobotHead::drawHead()
 {
@@ -403,6 +428,10 @@ void RobotArm::rotateAngle(TypeAngle angle, float rotate)
 {
     switch (angle)
     {
+    case ANGLE_WHEEL:
+        wheelAngle += rotate;
+        normalizeAngle(wheelAngle);
+        break;
     case ANGLEZ_LEFT_LONG_ARM:
         angleZLeftLongArm += rotate;
         normalizeAngle(angleZLeftLongArm);
