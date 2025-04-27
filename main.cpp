@@ -144,19 +144,19 @@ void mouseFunc(int button, int state, int x, int y)
 			}
 			else if(widget.UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				//specialKeys[GLUT_KEY_LEFT] = true;
+				specialKeys[GLUT_KEY_LEFT] = true;
 			}
 			else if(widget.UI_Maps[UIObject::RIGHT_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				//specialKeys[GLUT_KEY_RIGHT] = true;
+				specialKeys[GLUT_KEY_RIGHT] = true;
 			}
 			else if(widget.UI_Maps[UIObject::UP_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				//specialKeys[GLUT_KEY_UP] = true;
+				specialKeys[GLUT_KEY_UP] = true;
 			}
 			else if(widget.UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->getStatusHovered())
 			{
-				//specialKeys[GLUT_KEY_DOWN] = true;
+				specialKeys[GLUT_KEY_DOWN] = true;
 			}
 			else if(
 				widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->getStatusHovered()
@@ -180,10 +180,10 @@ void mouseFunc(int button, int state, int x, int y)
 		else if (state == GLUT_UP)
 		{
 			isDragging = false;
-			// specialKeys[GLUT_KEY_LEFT] = false;
-			// specialKeys[GLUT_KEY_RIGHT] = false;
-			// specialKeys[GLUT_KEY_UP] = false;
-			// specialKeys[GLUT_KEY_DOWN] = false;
+			specialKeys[GLUT_KEY_LEFT] = false;
+			specialKeys[GLUT_KEY_RIGHT] = false;
+			specialKeys[GLUT_KEY_UP] = false;
+			specialKeys[GLUT_KEY_DOWN] = false;
 
         }
         glutPostRedisplay(); // Vẽ lại
