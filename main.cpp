@@ -30,6 +30,7 @@ void specialUpFunc(int, int, int);
 void mouseFunc(int, int, int, int);
 void passiveMouseMotion(int, int);
 void motion(int, int);
+void update(int);
 
 void checkEventKeyboard();
 void checkEventSpecialKeys();
@@ -54,7 +55,7 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouseFunc);
 	glutPassiveMotionFunc(passiveMouseMotion);
 	glutMotionFunc(motion);
-	//glutIdleFunc();
+	glutTimerFunc(0, update, 0);
 	glutReshapeFunc(reshape);
 
 	glutMainLoop();
@@ -100,6 +101,9 @@ void display()
 	glutSwapBuffers();
 }
 
+void update(int value)
+{
+}
 void reshape(int w, int h)
 {
 	glViewport(0, 0, w, h);
@@ -189,8 +193,8 @@ void mouseFunc(int button, int state, int x, int y)
 void passiveMouseMotion(int x, int y)
 {
 	widget.checkAllButtonOver(x,y);
-	//cout << "mouseX: " << x << " mouseY: " << y << endl;
-	//widget.UI_Maps[DOWN_ARROW_SYMBOL_UI]->setPosition(x, y);
+	cout << "mouseX: " << x << " mouseY: " << y << endl;
+	//widget.UI_Maps[EXIT_BUTTON_UI]->setPosition(x, y);
 }
 
 void motion(int x, int y)

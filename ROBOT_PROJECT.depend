@@ -7,7 +7,7 @@
 
 1744990802 ated upstream
 
-1745678156 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
+1745717524 source:d:\code\cpp\opengl_codeblocks\robot_project\main.cpp
 	<bits/stdc++.h>
 	<GL/glut.h>
 	"include/Config.h"
@@ -87,7 +87,7 @@
 1744943898 d:\code\cpp\opengl_codeblocks\robot_project\include\console.h
 	<windows.h>
 
-1745677511 d:\code\cpp\opengl_codeblocks\robot_project\include\robotarm.h
+1745717124 d:\code\cpp\opengl_codeblocks\robot_project\include\robotarm.h
 	<GL/glut.h>
 	<iostream>
 	<fstream>
@@ -100,13 +100,13 @@
 	"Config.h"
 	"Utils.h"
 
-1745678330 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
+1745717188 source:d:\code\cpp\opengl_codeblocks\robot_project\source\robotarm.cpp
 	"../include/RobotArm.h"
 
 1744980945 source:d:\code\cpp\opengl_codeblocks\robot_project\source\userinterface.cpp
 	"../include/UserInterface.h"
 
-1745673119 source:d:\code\cpp\opengl_codeblocks\robot_project\source\utils.cpp
+1745717306 source:d:\code\cpp\opengl_codeblocks\robot_project\source\utils.cpp
 	"../include/Utils.h"
 	"../include/Config.h"
 
@@ -120,7 +120,7 @@
 	<string>
 	"UI_Attributes.h"
 
-1745595645 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
+1745717608 d:\code\cpp\opengl_codeblocks\robot_project\include\ui_attributes.h
 	"Config.h"
 	"Utils.h"
 

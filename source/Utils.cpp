@@ -181,7 +181,7 @@ void drawChessboardFloor()
             if ((i + j) % 2 == 0) {
                 setColor(GRAY);
             } else {
-                glColor3f(0.0f, 0.0f, 0.0f); // Màu đen
+                setColor(BLACK);
             }
 
             // Tính toán tọa độ của góc dưới bên trái của ô vuông

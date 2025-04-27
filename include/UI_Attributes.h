@@ -5,7 +5,7 @@
 #define UI_ATTRIBUTES_H
 
 //exit label
-const int X_exitLabel = 925;
+const int X_exitLabel = 1200;
 const int Y_exitLabel = 55;
 const string Text_exitLabel = "EXIT";
 const Color Color_exitLabel = BLACK;
@@ -86,7 +86,7 @@ const Color HoverColor_SixLabel = WHITE;
 
 
 //exit button
-const int X_exitButton = 915;
+const int X_exitButton = 1200;
 const int Y_exitButton = 10;
 const int Width_exitButton = 75;
 const int Height_exitButton = 75;
