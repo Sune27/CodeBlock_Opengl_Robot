@@ -16,6 +16,7 @@ class RobotHead
         ~RobotHead();
         void drawHead();
         void move(float);
+        Point getCenterPoint();
         void setDirection(Vector other);
     private:
         float headRadius;
@@ -53,6 +54,7 @@ public:
 
     bool getStatus(TypeStatus status);
     Point getCenterPoint();
+    Point getCenterHeadPoint();
     Vector getVector(TypeVector v);
     float getAngle(TypeAngle a);
 
@@ -66,6 +68,7 @@ private:
     bool isRightHandClaw;
     bool canLeftHandClaw;
     bool canRightHandClaw;
+    bool thirdPerspective = true;
     //wheel
     float wheelRadius;
     int wheelNumSpoke;

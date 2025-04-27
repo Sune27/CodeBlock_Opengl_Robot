@@ -9,9 +9,9 @@ const GLdouble eyeX = 50.0, eyeY = -50.0, eyeZ = 20.0;
 const GLdouble centerX = 0.0, centerY = 0.0, centerZ = 0.0;
 const GLdouble upX = 0.0, upY = 0.0, upZ = 1.0;
 
-const int WINDOW_WIDTH = 1000;
+const int WINDOW_WIDTH = 1300;
 const int WINDOW_HEIGHT = 800;
-const int WINDOW_POSITION_X = 450;
+const int WINDOW_POSITION_X = 50;
 const int WINDOW_POSITION_Y = 50;
 const float VIEWPORT_HEIGHT = 50;
 const int FPS = 60;
@@ -23,8 +23,8 @@ const float DIRECTION_LENGTH = 20.0;
 const float CAMERA_ANGLE_Z_MIN = -18;
 const float ANGLEZ_MIN = 55;
 const float ANGLEZ_MAX = 85;
-const float ANGLESHORTARM_MIN = 35.0;
-const float ANGLESHORTARM_MAX = 100.0;
+const float ANGLESHORTARM_MIN = 0.0;
+const float ANGLESHORTARM_MAX = 180.0;
 const float ANGLEXLONGARM_MAX = 25.0;
 const float ANGLEXLONGARM_MIN = -60.0;
 const float ANGLEZLONGARM_MAX = 90;
@@ -53,7 +53,7 @@ enum UIObject
     FOUR_KEYBOARD_LABEL_UI,
     FIVE_KEYBOARD_LABEL_UI,
     SIX_KEYBOARD_LABEL_UI,
-    
+
     EXIT_BUTTON_UI,
     LEFT_ARROW_BUTTON_UI,
     RIGHT_ARROW_BUTTON_UI,
@@ -92,6 +92,7 @@ enum TypeStatus
     RIGHT_HAND_CLAWING,
     CAN_LEFT_HAND_CLAW,
     CAN_RIGHT_HAND_CLAW,
+    PERSPECTIVE,
 
     TOTAL_STATUS
 };

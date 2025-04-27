@@ -58,7 +58,7 @@ RobotArm::RobotArm()
     containerLength = 2;
 
     wheel_Color = ALUMINUM;
-    wheelSpoke_Color = BLACK;
+    wheelSpoke_Color = RED;
     body_Color = GOLD3;
     body_OutlineColor = DARK_GRAY;
     joint_Color = SILVER;
@@ -124,8 +124,8 @@ void RobotArm::update()
     //wheel
     centerLeftWheelPoint = centerBodyPoint;
     centerRightWheelPoint = centerBodyPoint;
-    centerLeftWheelPoint.move(normalBase, -bodyRadius);
-    centerRightWheelPoint.move(normalBase, -bodyRadius);
+    centerLeftWheelPoint.move(normalBase, -bodyHeight/2);
+    centerRightWheelPoint.move(normalBase, -bodyHeight/2);
     centerLeftWheelPoint.move(robotDirectionXY_Horizontal, -wheelDistance/2.0);
     centerRightWheelPoint.move(robotDirectionXY_Horizontal, wheelDistance/2.0);
 
@@ -189,10 +189,10 @@ void RobotArm::draw()
     printAttributes();
     drawDirection();
     drawChessboardFloor();
-    drawWheel();
     if(showRobot)
     {
-        head.drawHead();
+        drawWheel();
+        if(thirdPerspective==true) head.drawHead();
         drawRobotBody();
         drawRobotJoint();
         drawRobotShortArm();
@@ -225,13 +225,13 @@ void RobotArm::drawContainer()
     }
     else if(isLeftHandClaw == true)
     {
-        drawBox(containerLength, containerLength, containerLength, containerDirection, centerLeftHandPoint, container_Color);
-        drawBoxOutline(containerLength, containerLength, containerLength, containerDirection, centerLeftHandPoint, container_OutlineColor);
+        drawBox(containerLength, containerLength, containerLength, robotDirectionXY_Vertical, centerLeftHandPoint, container_Color);
+        drawBoxOutline(containerLength, containerLength, containerLength, robotDirectionXY_Vertical, centerLeftHandPoint, container_OutlineColor);
     }
     else if(isRightHandClaw == true)
     {
-        drawBox(containerLength, containerLength, containerLength, containerDirection, centerRightHandPoint, container_Color);
-        drawBoxOutline(containerLength, containerLength, containerLength, containerDirection, centerRightHandPoint, container_OutlineColor);
+        drawBox(containerLength, containerLength, containerLength, robotDirectionXY_Vertical, centerRightHandPoint, container_Color);
+        drawBoxOutline(containerLength, containerLength, containerLength, robotDirectionXY_Vertical, centerRightHandPoint, container_OutlineColor);
     }
 }
 void RobotArm::drawRobotHand()
@@ -303,8 +303,9 @@ void RobotArm::drawRobotBody()
 void RobotArm::drawWheel()
 {
     drawCylinderWithCaps(wheelRadius, wheelThickness, wheelRadius*0.4, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheel_Color);
-    drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
     drawCylinderWithCaps(wheelRadius, wheelThickness, wheelRadius*0.4, centerRightWheelPoint, robotDirectionXY_Horizontal, wheel_Color);
+    
+    drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
     drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerRightWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
 }
 void RobotHead::drawHead()
@@ -330,6 +331,9 @@ void RobotArm::changeStatus(TypeStatus status)
 {
     switch(status)
     {
+        case PERSPECTIVE:
+            thirdPerspective = !thirdPerspective;
+            break;
         case SHOW_OBJECT_STATUS:
             showRobot = !showRobot;
             break;
@@ -400,6 +404,8 @@ bool RobotArm::getStatus(TypeStatus status)
         return canRightHandClaw;
     case CAN_LEFT_HAND_CLAW:
         return canLeftHandClaw;
+    case PERSPECTIVE:
+        return thirdPerspective;
     default:
         break;
     }
@@ -467,4 +473,12 @@ void RobotArm::rotateAngle(TypeAngle angle, float rotate)
     default:
         break;
     }
+}
+Point RobotArm::getCenterHeadPoint()
+{
+    return head.getCenterPoint();
+}
+Point RobotHead::getCenterPoint()
+{
+    return this->centerHeadPoint;
 }

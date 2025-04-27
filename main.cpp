@@ -19,6 +19,7 @@ int lastMouseX = 0;
 int lastMouseY = 0;
 bool isDragging = false;
 bool changed = false;
+bool thirdPerspective = true;
 
 void display();
 void reshape(int, int);
@@ -69,13 +70,27 @@ void display()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	gluLookAt
-	(
-		eyeX*cos(cameraAngle), eyeY*sin(cameraAngle), eyeZ+cameraAngleZ,
-		robotArm.getCenterPoint().arr[0], robotArm.getCenterPoint().arr[1], robotArm.getCenterPoint().arr[2],
-		upX, upY, upZ
-	);
-
+	if(thirdPerspective == true)
+	{	
+		gluLookAt
+		(
+			eyeX*cos(cameraAngle), eyeY*sin(cameraAngle), eyeZ+cameraAngleZ,
+			robotArm.getCenterPoint().arr[0], robotArm.getCenterPoint().arr[1], robotArm.getCenterPoint().arr[2],
+			upX, upY, upZ
+		);
+	}
+	else
+	{
+		Point eye = robotArm.getCenterHeadPoint();
+		eye.move(robotArm.getVector(ROBOTDIRECTIONXY_VERTICAL), 5);
+		Point center = eye;
+		center.move(robotArm.getVector(ROBOTDIRECTIONXY_VERTICAL), -10);
+		gluLookAt(
+			eye.arr[0], eye.arr[1], eye.arr[2],
+			center.arr[0], center.arr[1], center.arr[2],
+			upX, upY, upZ
+		);
+	}
 	robotArm.draw();
 	widget.draw();
 	checkEventKeyboard();
@@ -248,8 +263,8 @@ void specialFunc(int key, int x, int y)
 {
 	if(key == GLUT_KEY_F1)
 	{
-		if(robotArm.getStatus(LEFT_HAND_CLAWING) == false)
-            robotArm.changeStatus(RIGHT_HAND_CLAWING);
+		thirdPerspective = !thirdPerspective;
+		robotArm.changeStatus(PERSPECTIVE);
 	}
 	else
 	{
@@ -261,17 +276,17 @@ void checkEventSpecialKeys()
 	float rotate = 0.05;
 
 	if(specialKeys[GLUT_KEY_RIGHT])
-		robotArm.rotateAngle(ANGLE_X, -ROTATE);
-	if(specialKeys[GLUT_KEY_LEFT])
 		robotArm.rotateAngle(ANGLE_X, ROTATE);
+	if(specialKeys[GLUT_KEY_LEFT])
+		robotArm.rotateAngle(ANGLE_X, -ROTATE);
 	if(specialKeys[GLUT_KEY_UP])
 	{
-		robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
+		//robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
 		robotArm.move(-0.2);
 	}
 	if(specialKeys[GLUT_KEY_DOWN])
 	{		
-		robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
+		//robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
 		robotArm.move(0.2);
 	}
 }
