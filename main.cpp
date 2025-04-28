@@ -72,7 +72,7 @@ void display()
 	glLoadIdentity();
 
 	if(thirdPerspective == true)
-	{	
+	{
 		gluLookAt
 		(
 			eyeX*cos(cameraAngle), eyeY*sin(cameraAngle), eyeZ+cameraAngleZ,
@@ -142,6 +142,55 @@ void mouseFunc(int button, int state, int x, int y)
 			{
 				exit(0);
 			}
+			else if(widget.UI_Maps[UIObject::Q_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['q'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::A_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['a'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::W_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['w'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::S_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['s'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::E_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['e'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::D_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['d'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::ONE_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['1'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::TWO_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['2'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::THREE_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['3'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::FOUR_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['4'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::FIVE_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['5'] = true;
+			}
+			else if(widget.UI_Maps[UIObject::SIX_KEYBOARD_BUTTON_UI]->getStatusHovered())
+			{
+				keys['6'] = true;
+			}
+
 			else if(widget.UI_Maps[UIObject::LEFT_ARROW_BUTTON_UI]->getStatusHovered())
 			{
 				specialKeys[GLUT_KEY_LEFT] = true;
@@ -184,7 +233,18 @@ void mouseFunc(int button, int state, int x, int y)
 			specialKeys[GLUT_KEY_RIGHT] = false;
 			specialKeys[GLUT_KEY_UP] = false;
 			specialKeys[GLUT_KEY_DOWN] = false;
-
+			keys['1'] = false;
+			keys['2'] = false;
+			keys['3'] = false;
+			keys['4'] = false;
+			keys['5'] = false;
+			keys['6'] = false;
+			keys['q'] = false;
+			keys['a'] = false;
+			keys['s'] = false;
+			keys['w'] = false;
+			keys['e'] = false;
+			keys['d'] = false;
         }
         glutPostRedisplay(); // Vẽ lại
     }
@@ -193,8 +253,9 @@ void mouseFunc(int button, int state, int x, int y)
 void passiveMouseMotion(int x, int y)
 {
 	widget.checkAllButtonOver(x,y);
-	cout << "mouseX: " << x << " mouseY: " << y << endl;
-	//widget.UI_Maps[EXIT_BUTTON_UI]->setPosition(x, y);
+	// cout << "mouseX: " << x << endl;
+	// cout << " mouseY: " << y << endl;
+	//widget.UI_Maps[Q_KEYBOARD_LABEL_UI]->setPosition(x, y);
 }
 
 void motion(int x, int y)
@@ -248,10 +309,10 @@ void checkEventKeyboard()
 	if(keys['1'])
 		robotArm.rotateAngle(ANGLE_RIGHT_SHORT_ARM, -ROTATE);
 
-	// for(int i = (int)'a'; i < (int)'z'; ++i)
-	// {
-	// 	cout << (char)i << ": " << keys[i] << endl;
-	// }
+	for(int i = (int)'a'; i < (int)'z'; ++i)
+	{
+		cout << (char)i << ": " << keys[i] << endl;
+	}
 	widget.UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_LEFT_HAND_CLAW));
 	widget.UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->setDisable(!robotArm.getStatus(CAN_RIGHT_HAND_CLAW));
 	robotArm.checkMinValueAngle();
@@ -277,8 +338,6 @@ void specialFunc(int key, int x, int y)
 }
 void checkEventSpecialKeys()
 {
-	float rotate = 0.05;
-
 	if(specialKeys[GLUT_KEY_RIGHT])
 		robotArm.rotateAngle(ANGLE_X, ROTATE);
 	if(specialKeys[GLUT_KEY_LEFT])
@@ -289,7 +348,7 @@ void checkEventSpecialKeys()
 		robotArm.move(-0.2);
 	}
 	if(specialKeys[GLUT_KEY_DOWN])
-	{		
+	{
 		//robotArm.rotateAngle(ANGLE_WHEEL, ROTATE);
 		robotArm.move(0.2);
 	}

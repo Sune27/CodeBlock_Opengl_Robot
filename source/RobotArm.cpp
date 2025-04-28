@@ -100,8 +100,8 @@ void RobotHead::move(float distance)
 void RobotArm::printAttributes()
 {
     cout << __TIME__ << endl;
-    cout << centerLeftWheelPoint << endl;
-    cout << centerBodyPoint << endl;
+    //cout << centerLeftWheelPoint << endl;
+    //cout << centerBodyPoint << endl;
 }
 
 void RobotArm::update()
@@ -304,7 +304,7 @@ void RobotArm::drawWheel()
 {
     drawCylinderWithCaps(wheelRadius, wheelThickness, wheelRadius*0.4, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheel_Color);
     drawCylinderWithCaps(wheelRadius, wheelThickness, wheelRadius*0.4, centerRightWheelPoint, robotDirectionXY_Horizontal, wheel_Color);
-    
+
     drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerLeftWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
     drawCylinderSpokes(wheelRadius*0.8, wheelThickness, centerRightWheelPoint, robotDirectionXY_Horizontal, wheelNumSpoke, wheelSpoke_Color);
 }
@@ -324,7 +324,7 @@ void RobotArm::move(float distance)
 {
     centerBodyPoint.move(robotDirectionXY_Vertical, distance);
     head.move(distance);
-    
+
 }
 RobotHead::~RobotHead(){}
 void RobotArm::changeStatus(TypeStatus status)
@@ -355,9 +355,8 @@ void RobotArm::changeStatus(TypeStatus status)
 }
 void RobotArm::checkMinValueAngle()
 {
-    if(angleZ < ANGLEZ_MIN) angleZ = ANGLEZ_MIN;
     if(angleLeftShortArm < ANGLESHORTARM_MIN) angleLeftShortArm = ANGLESHORTARM_MIN;
-    else if(angleRightShortArm < ANGLESHORTARM_MIN) angleRightShortArm = ANGLESHORTARM_MIN;
+    if(angleRightShortArm < ANGLESHORTARM_MIN) angleRightShortArm = ANGLESHORTARM_MIN;
     // if(angleXLeftLongArm < ANGLEXLONGARM_MIN) angleXLeftLongArm = ANGLEXLONGARM_MIN;
     // else if(angleXRightLongArm < ANGLEXLONGARM_MIN) angleXRightLongArm = ANGLEXLONGARM_MIN;
     // if(angleZLeftLongArm < ANGLEZLONGARM_MIN) angleZLeftLongArm = ANGLEZLONGARM_MIN;
@@ -366,9 +365,8 @@ void RobotArm::checkMinValueAngle()
 }
 void RobotArm::checkMaxValueAngle()
 {
-    if(angleZ > ANGLEZ_MAX) angleZ = ANGLEZ_MAX;
     if(angleLeftShortArm > ANGLESHORTARM_MAX) angleLeftShortArm = ANGLESHORTARM_MAX;
-    else if(angleRightShortArm > ANGLESHORTARM_MAX) angleRightShortArm = ANGLESHORTARM_MAX;
+    if(angleRightShortArm > ANGLESHORTARM_MAX) angleRightShortArm = ANGLESHORTARM_MAX;
     // if(angleXLeftLongArm > ANGLEXLONGARM_MAX) angleXLeftLongArm = ANGLEXLONGARM_MAX;
     // else if(angleXRightLongArm > ANGLEXLONGARM_MAX) angleXRightLongArm = ANGLEXLONGARM_MAX;
     // if(angleZLeftLongArm > ANGLEZLONGARM_MAX) angleZLeftLongArm = ANGLEZLONGARM_MAX;

@@ -59,6 +59,7 @@ Button::Button(int x, int y, int width, int height, Color background, Color back
     this->background = background;
     this->background_hover = backgroundHover;
     this->isHovered = false;
+    this->isDisable = false;
 }
 void Button::draw()
 {
@@ -255,6 +256,12 @@ void UI_Manager::checkAllButtonOver(int mouseX, int mouseY)
     UI_Maps[UIObject::DOWN_ARROW_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::RIGHT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::LEFT_HAND_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::A_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::Q_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::W_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::S_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::E_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
+    UI_Maps[UIObject::D_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::ONE_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::TWO_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
     UI_Maps[UIObject::THREE_KEYBOARD_BUTTON_UI]->buttonOver(mouseX, mouseY);
