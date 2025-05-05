@@ -88,10 +88,36 @@ RobotArm::RobotArm()
 RobotHead::RobotHead()
 {
     headRadius = 3;
+    eyesRadius = 0.5;
+    eyesDistance = 1;
+    eyesMove = -2.8;
     headZPosition = 13;
     normal.setValue(0,0,1);
     head_Color = ORANGE;
+    eyes_Color = YELLOW;
     centerHeadPoint.move(normal, headZPosition);
+    centerEyesLeftPoint = centerHeadPoint;
+    centerEyesRightPoint = centerHeadPoint;
+    Vector orthogonal;
+    orthogonal.horizontal(direction);
+    centerEyesLeftPoint.move(orthogonal, eyesDistance/2.0);
+    centerEyesRightPoint.move(orthogonal, eyesDistance/-2.0);
+    centerEyesLeftPoint.move(direction, eyesMove);
+    centerEyesRightPoint.move(direction, eyesMove);
+
+
+}
+void RobotHead::update()
+{
+    centerEyesLeftPoint = centerHeadPoint;
+    centerEyesRightPoint = centerHeadPoint;
+    Vector orthogonal;
+    orthogonal.horizontal(direction);
+    centerEyesLeftPoint.move(orthogonal, eyesDistance/2.0);
+    centerEyesRightPoint.move(orthogonal, eyesDistance/-2.0);
+    centerEyesLeftPoint.move(direction, eyesMove);
+    centerEyesRightPoint.move(direction, eyesMove);
+
 }
 void RobotHead::move(float distance)
 {
@@ -121,6 +147,7 @@ void RobotArm::update()
     leftHandDirection.rotateAroundZAxis(leftLongArmDirection, 90);
     rightHandDirection.rotateAroundZAxis(rightLongArmDirection, 90);
     head.setDirection(robotDirectionXY_Vertical);
+    head.update();
     //wheel
     centerLeftWheelPoint = centerBodyPoint;
     centerRightWheelPoint = centerBodyPoint;
@@ -311,6 +338,8 @@ void RobotArm::drawWheel()
 void RobotHead::drawHead()
 {
     drawSolidSphere(centerHeadPoint, headRadius, head_Color);
+    drawSolidSphere(centerEyesLeftPoint, eyesRadius, eyes_Color);
+    drawSolidSphere(centerEyesRightPoint, eyesRadius, eyes_Color);
 }
 bool RobotArm::checkHandClaw()
 {

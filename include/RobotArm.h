@@ -16,13 +16,21 @@ class RobotHead
         ~RobotHead();
         void drawHead();
         void move(float);
+        void update();
         Point getCenterPoint();
         void setDirection(Vector other);
     private:
         float headRadius;
         float headZPosition;
+        float eyesRadius;
+        float eyesDistance;
+        float eyesMove;
 
         Color head_Color;
+        Color eyes_Color;
+
+        Point centerEyesLeftPoint;
+        Point centerEyesRightPoint;
         Point centerHeadPoint;
         Vector normal;
         Vector direction;
